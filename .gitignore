@@ -1,0 +1,18 @@
+# ------------------------------------------------------------------
+# Résumé — kept locally but NOT published to the public GitHub Pages site.
+# Remove these lines if you ever decide to publish it.
+# ------------------------------------------------------------------
+*.pdf
+assets/resume/
+
+# Editor / workspace settings
+.vscode/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local Python tooling
+__pycache__/
+*.pyc

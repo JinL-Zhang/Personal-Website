@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Title & description are updated by script.js based on the article. -->
+  <title>Article — Jinlun Zhang</title>
+  <meta name="description" content="An article by Jinlun Zhang." />
+  <meta name="theme-color" content="#35608e" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap"
+        rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" id="top">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html" aria-label="Jinlun Zhang — home">
+          <span class="brand__mark" aria-hidden="true">JZ</span>
+          <span class="brand__name">Jinlun Zhang
+            <span class="brand__role">Digital Strategy &amp; Transformation</span>
+          </span>
+        </a>
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#work">Work</a></li>
+          <li><a href="index.html#approach">Approach</a></li>
+          <li><a href="index.html#insights">Insights</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn" href="index.html#contact">Contact</a>
+        </div>
+        <button class="nav-toggle" type="button"
+                aria-label="Toggle navigation menu"
+                aria-controls="nav-menu" aria-expanded="false">
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="reader">
+      <div class="container">
+        <!-- script.js renders the article here based on ?id= in the URL -->
+        <div class="reader__wrap" id="reader-root">
+          <p>Loading article…</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand__mark" aria-hidden="true">JZ</span>
+            <span class="brand__name">Jinlun Zhang
+              <span class="brand__role">Digital Strategy &amp; Transformation</span>
+            </span>
+          </a>
+          <p class="footer-about">
+            Consultant working at the intersection of business strategy, data,
+            AI, and technology-enabled operating models.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#work">Selected Work</a></li>
+            <li><a href="index.html#approach">Approach</a></li>
+            <li><a href="articles.html">Insights</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="mailto:jinzhang15@outlook.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/jin-zhang-1ba407171/" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year">2026</span> Jinlun Zhang. All rights reserved.</p>
+        <a class="to-top" href="#top">
+          Back to top
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/articles.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
