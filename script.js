@@ -91,6 +91,22 @@
     $$("#year").forEach((el) => (el.textContent = String(new Date().getFullYear())));
   }
 
+  /* ---------- 3b. scroll to top ------------------------------------------
+     The header is `position: sticky` and always visible, so a plain #top
+     anchor never scrolls. Handle these links explicitly. */
+  function initToTop() {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    $$('a[href="#top"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+        if (window.history && history.replaceState) {
+          history.replaceState(null, "", location.pathname + location.search);
+        }
+      });
+    });
+  }
+
   /* ---------- 4. scroll reveal ------------------------------------------- */
   function initReveal() {
     const items = $$(".reveal");
@@ -403,6 +419,7 @@
     initHeaderScroll();
     initNav();
     initYear();
+    initToTop();
     initGrids();
     initReader();
     initReveal();

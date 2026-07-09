@@ -34,7 +34,7 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
   <!-- =========================================================================
        HEADER / NAVIGATION
@@ -45,21 +45,26 @@
         <a class="brand" href="#top" aria-label="Jinlun Zhang — home">
           <span class="brand__mark" aria-hidden="true">JZ</span>
           <span class="brand__name">Jinlun Zhang
-            <span class="brand__role">Digital Strategy &amp; Transformation</span>
+            <span class="brand__role" data-i18n="brand.role">Business, Data &amp; AI</span>
           </span>
         </a>
 
         <ul class="nav-links" id="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#approach">Approach</a></li>
-          <li><a href="#insights">Insights</a></li>
+          <li><a href="#home" data-i18n="nav.home">Home</a></li>
+          <li><a href="#insights" data-i18n="nav.insights">Insights</a></li>
+          <li><a href="#highlights" data-i18n="nav.highlights">Highlights</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#work" data-i18n="nav.work">Work</a></li>
+          <li><a href="#approach" data-i18n="nav.approach">Approach</a></li>
         </ul>
 
         <div class="nav-cta">
-          <a class="btn" href="#contact">Contact</a>
+          <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language" data-lang-toggle>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.9 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.9-4-9s1.5-6.4 4-9Z"/></svg>
+            <span class="lang-toggle__label">中文</span>
+          </button>
+          <a class="btn" href="#contact" data-i18n="nav.contact">Contact</a>
         </div>
 
         <button class="nav-toggle" type="button"
@@ -80,13 +85,13 @@
       <div class="container">
         <div class="hero__grid">
           <div class="hero__content reveal">
-            <p class="eyebrow">Bridging Business, Data &amp; AI</p>
+            <p class="eyebrow" data-i18n="hero.eyebrow">Bridging Business, Data &amp; AI</p>
             <h1 class="hero__title" id="hero-title">Jinlun Zhang</h1>
-            <p class="hero__headline">
+            <p class="hero__headline" data-i18n="hero.headline">
               Working at the intersection of business strategy, data, AI, and
               technology-enabled operating models.
             </p>
-            <p class="hero__summary">
+            <p class="hero__summary" data-i18n="hero.summary">
               I help organisations turn ambition into action — translating
               business strategy into practical <strong>data, AI, and digital
               transformation</strong> outcomes. My work spans executive
@@ -96,26 +101,26 @@
 
             <!-- Call-to-action buttons -->
             <div class="hero__actions">
-              <a class="btn" href="#experience">
-                View Experience
+              <a class="btn" href="articles.html">
+                <span data-i18n="hero.cta.articles">Read Articles</span>
                 <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
               </a>
-              <a class="btn btn--ghost" href="articles.html">Read Articles</a>
-              <a class="btn btn--ghost" href="#contact">Contact</a>
+              <a class="btn btn--ghost" href="#experience" data-i18n="hero.cta.experience">View Experience</a>
+              <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta.contact">Contact</a>
             </div>
 
             <dl class="hero__meta">
               <div class="hero__meta-item">
-                <dt>Based in</dt><dd>Toronto, Canada</dd>
+                <dt data-i18n="hero.meta.based">Based in</dt><dd data-i18n="hero.meta.based.val">Toronto, Canada</dd>
               </div>
               <div class="hero__meta-item">
-                <dt>Focus</dt><dd>Data &amp; AI · Transformation</dd>
+                <dt data-i18n="hero.meta.focus">Focus</dt><dd data-i18n="hero.meta.focus.val">Data &amp; AI · Transformation</dd>
               </div>
               <div class="hero__meta-item">
-                <dt>Education</dt><dd>MMAI · B.Sc.</dd>
+                <dt data-i18n="hero.meta.education">Education</dt><dd data-i18n="hero.meta.education.val">Master (MMAI)<br>B.Sc. Computer Science</dd>
               </div>
               <div class="hero__meta-item">
-                <dt>Languages</dt><dd>English · Mandarin</dd>
+                <dt data-i18n="hero.meta.languages">Languages</dt><dd data-i18n="hero.meta.languages.val">English · Mandarin</dd>
               </div>
             </dl>
           </div>
@@ -128,8 +133,8 @@
             <figcaption class="hero__badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>
               <span>
-                <b>MMAI · Schulich</b>
-                <span>Graduated with Distinction</span>
+                <b data-i18n="hero.badge.title">Data &amp; AI Consultant</b>
+                <span data-i18n="hero.badge.sub">Strategy · Analytics · Delivery</span>
               </span>
             </figcaption>
           </figure>
@@ -145,361 +150,44 @@
         <div class="focus-strip__inner reveal">
           <article class="focus-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polygon points="15.5 8.5 12.5 12.5 8.5 15.5 11.5 11.5 15.5 8.5"/></svg>
-            <h3>Digital Strategy &amp; Transformation</h3>
-            <p>Roadmaps and operating models that align leadership on priorities and outcomes.</p>
+            <h3 data-i18n="focus.1.h">Digital Strategy &amp; Transformation</h3>
+            <p data-i18n="focus.1.p">Roadmaps and operating models that align leadership on priorities and outcomes.</p>
           </article>
           <article class="focus-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
-            <h3>Data &amp; AI Strategy</h3>
-            <p>Governed use cases, analytics readiness, and value framed for the business.</p>
+            <h3 data-i18n="focus.2.h">Data &amp; AI Strategy</h3>
+            <p data-i18n="focus.2.p">Governed use cases, analytics readiness, and value framed for the business.</p>
           </article>
           <article class="focus-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a7 7 0 0 0-4 12.7V18h8v-2.3A7 7 0 0 0 12 3Z"/><path d="M9 21h6M10 18v3M14 18v3"/></svg>
-            <h3>AI / ML Implementation</h3>
-            <p>From use-case evaluation to applied delivery on modern data &amp; AI platforms.</p>
+            <h3 data-i18n="focus.3.h">AI / ML Implementation</h3>
+            <p data-i18n="focus.3.p">From use-case evaluation to applied delivery on modern data &amp; AI platforms.</p>
           </article>
           <article class="focus-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>
-            <h3>Business Analysis &amp; Delivery</h3>
-            <p>Requirements, current/target-state analysis, and change that lands in practice.</p>
+            <h3 data-i18n="focus.4.h">Business Analysis &amp; Delivery</h3>
+            <p data-i18n="focus.4.p">Requirements, current/target-state analysis, and change that lands in practice.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- =====================================================================
-         2. PROFESSIONAL BACKGROUND / EXPERIENCE
+         ARTICLES / INSIGHTS — surfaced high (full list on articles.html)
          ================================================================== -->
-    <section class="section" id="experience" aria-labelledby="experience-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Professional Background</p>
-          <h2 class="section-title" id="experience-title">Experience that blends strategy and delivery</h2>
-          <p class="section-intro">
-            A consulting path across digital transformation, data &amp; AI, and
-            business analysis — combining executive-level advisory with hands-on
-            implementation.
-          </p>
-        </header>
-
-        <div class="timeline">
-          <!-- --------------------- BDO Canada --------------------- -->
-          <article class="xp reveal">
-            <div class="xp__aside">
-              <!-- Company logo: assets/img/logo-bdo.png -->
-              <span class="org-logo"><img src="assets/img/logo-bdo.png" alt="BDO Canada logo" /></span>
-              <span class="xp__period">2024 — Present</span>
-              <h3 class="xp__company">BDO Canada</h3>
-              <p class="xp__location">Toronto, Canada · Consulting</p>
-            </div>
-            <div class="xp__main">
-              <p class="xp__role">Consultant, Digital Strategy &amp; Transformation</p>
-              <ul class="xp__list">
-                <li>Facilitate client workshops to surface pain points, define current and target states, and shape transformation roadmaps that align executives on priorities and expected outcomes.</li>
-                <li>Translate benchmarking and solution-option analysis into executive-ready recommendations and presentations.</li>
-                <li>Develop data and AI strategy deliverables — operating models, governance structures, and roadmaps that improve data reliability, analytics readiness, and productivity.</li>
-                <li>Support sales and delivery through proposals, RFP responses, Statements of Work, scope definition, and success metrics.</li>
-              </ul>
-
-              <!-- Selected engagements are described at a high level and
-                   sanitised to protect client-confidential information. -->
-              <div class="xp__projects">
-                <div class="xp__project">
-                  <h4>AI Evaluation &amp; Governance — “LLM-as-a-Judge” <span>2025 – 2026</span></h4>
-                  <p>Designed an LLM-based evaluation approach to measure alignment between user intent and AI-generated responses in a retrieval-augmented workflow, delivered on Azure. Turned findings into user coaching, prompt-template refinement, and a repeatable evaluation loop — supporting stronger AI adoption and faster turnaround.</p>
-                </div>
-                <div class="xp__project">
-                  <h4>Global Technology Architecture &amp; Consolidation <span>2026</span></h4>
-                  <p>Led current- and target-state technology architecture for a multinational organisation operating across several countries — mapping today's systems and designing a target model that balances shared platforms, local needs, and future growth. Presented executive-level views to align leadership and inform vendor selection for downstream transformation programs.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- --------------------- RBC --------------------- -->
-          <article class="xp reveal">
-            <div class="xp__aside">
-              <!-- Company logo: assets/img/logo-rbc.png -->
-              <span class="org-logo"><img src="assets/img/logo-rbc.png" alt="Royal Bank of Canada logo" /></span>
-              <span class="xp__period">2023 — 2024</span>
-              <h3 class="xp__company">Royal Bank of Canada</h3>
-              <p class="xp__location">Toronto, Canada · Data &amp; Analytics</p>
-            </div>
-            <div class="xp__main">
-              <p class="xp__role">Artificial Intelligence Consultant</p>
-              <ul class="xp__list">
-                <li>Co-developed an end-to-end natural language processing application to semi-automate data-ontology creation from documentation and data models.</li>
-                <li>Contributed to data labelling, LLM experimentation (HuggingFace), and application / API development within the Data &amp; Analytics CTO organisation.</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         3. ACADEMIC BACKGROUND & SKILLS
-         ================================================================== -->
-    <section class="section section--soft" id="skills" aria-labelledby="skills-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Academic Background &amp; Skills</p>
-          <h2 class="section-title" id="skills-title">A foundation in management, AI, and computer science</h2>
-          <p class="section-intro">
-            Formal training that pairs business management with applied
-            artificial intelligence and a computer-science core.
-          </p>
-        </header>
-
-        <!-- Education -->
-        <div class="edu-grid">
-          <article class="edu-card reveal">
-            <!-- School logo: assets/img/logo-schulich.png -->
-            <span class="org-logo"><img src="assets/img/logo-schulich.png" alt="Schulich School of Business, York University logo" /></span>
-            <div>
-              <h3 class="edu-card__school">Schulich School of Business, York University</h3>
-              <p class="edu-card__degree">Master of Management in Artificial Intelligence (MMAI)</p>
-              <p class="edu-card__meta">Business management with a specialised focus on applied AI.</p>
-              <div class="edu-card__tags">
-                <span class="tag--honor">Admission Scholarship</span>
-                <span class="tag--honor">Graduated with Distinction</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="edu-card reveal">
-            <!-- School logo: assets/img/logo-queens.png -->
-            <span class="org-logo"><img src="assets/img/logo-queens.png" alt="Queen's University logo" /></span>
-            <div>
-              <h3 class="edu-card__school">Queen's University</h3>
-              <p class="edu-card__degree">B.Sc. Computer Science — Data Analytics focus</p>
-              <p class="edu-card__meta">Completed with a Professional Internship.</p>
-              <div class="edu-card__tags">
-                <span class="tag--honor">Distinction (Top 3%)</span>
-                <span class="tag--honor">Certificate in Business, Smith</span>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Skills grid -->
-        <div class="skills-grid">
-          <article class="skill-card reveal">
-            <div class="skill-card__head">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polygon points="15.5 8.5 12.5 12.5 8.5 15.5 11.5 11.5 15.5 8.5"/></svg>
-              <h3>Strategy &amp; Consulting</h3>
-            </div>
-            <div class="chips">
-              <span class="chip">Digital strategy</span>
-              <span class="chip">Data &amp; AI strategy</span>
-              <span class="chip">Operating-model design</span>
-              <span class="chip">Roadmap development</span>
-              <span class="chip">Executive communication</span>
-              <span class="chip">Workshop facilitation</span>
-              <span class="chip">Proposals &amp; SOWs</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <div class="skill-card__head">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
-              <h3>Data, AI &amp; Analytics</h3>
-            </div>
-            <div class="chips">
-              <span class="chip">Machine learning</span>
-              <span class="chip">Deep learning</span>
-              <span class="chip">Natural Language Processing</span>
-              <span class="chip">LLM workflows</span>
-              <span class="chip">LLM-as-a-Judge</span>
-              <span class="chip">Prompt / Response evaluation</span>
-              <span class="chip">Data engineering &amp; analysis</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <div class="skill-card__head">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 3-6 9 6 9M16 3l6 9-6 9"/><path d="M13 4 11 20"/></svg>
-              <h3>Technology &amp; Delivery</h3>
-            </div>
-            <div class="chips">
-              <span class="chip">Azure AI Foundry</span>
-              <span class="chip">Microsoft Fabric</span>
-              <span class="chip">Databricks</span>
-              <span class="chip">Solution architecture</span>
-              <span class="chip">API development</span>
-              <span class="chip">GitHub</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <div class="skill-card__head">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3-5 3V6a2 2 0 0 1 2-2Z"/></svg>
-              <h3>Business Analysis &amp; Change</h3>
-            </div>
-            <div class="chips">
-              <span class="chip">Requirements &amp; user stories</span>
-              <span class="chip">Current / target-state analysis</span>
-              <span class="chip">Stakeholder alignment</span>
-              <span class="chip">Governance-aware rollout</span>
-              <span class="chip">Agile delivery</span>
-              <span class="chip">Change enablement</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <div class="skill-card__head">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M18 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2Z"/><path d="M8 13h8M8 17h6"/></svg>
-              <h3>Tools / Platforms</h3>
-            </div>
-            <div class="chips">
-              <span class="chip">Python</span>
-              <span class="chip">SQL / PostgreSQL</span>
-              <span class="chip">Power BI</span>
-              <span class="chip">Tableau</span>
-              <span class="chip">Azure DevOps</span>
-              <span class="chip">Microsoft Dynamics 365</span>
-              <span class="chip">Microsoft Fabric</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <div class="skill-card__head">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg>
-              <h3>Languages</h3>
-            </div>
-            <div class="chips">
-              <span class="chip">English — Fluent</span>
-              <span class="chip">Mandarin — Fluent</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         4. SELECTED WORK / PROJECT THEMES
-         ================================================================== -->
-    <section class="section" id="work" aria-labelledby="work-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Selected Work</p>
-          <h2 class="section-title" id="work-title">The kinds of problems I help solve</h2>
-          <p class="section-intro">
-            Representative themes from recent engagements. Details are kept at a
-            high level to respect client confidentiality.
-          </p>
-        </header>
-
-        <div class="themes-grid">
-          <article class="theme-card reveal">
-            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 5-7"/></svg></div>
-            <h3>Data &amp; AI Strategy</h3>
-            <p>Operating models, governance, and roadmaps that make data and AI investment pay off.</p>
-          </article>
-          <article class="theme-card reveal">
-            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-            <h3>AI / ML Use-Case Evaluation</h3>
-            <p>Assessing feasibility, value, and risk to prioritise the use cases worth pursuing.</p>
-          </article>
-          <article class="theme-card reveal">
-            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.2 7.9 8 9 4.8-1.1 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-            <h3>LLM Evaluation &amp; Governance</h3>
-            <p>Structured evaluation of AI outputs — alignment, quality, and responsible-use guardrails.</p>
-          </article>
-          <article class="theme-card reveal">
-            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
-            <h3>Digital Transformation Roadmaps</h3>
-            <p>Current-to-target journeys sequenced by value, feasibility, and organisational readiness.</p>
-          </article>
-          <article class="theme-card reveal">
-            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div>
-            <h3>Microsoft Dynamics 365 Applications</h3>
-            <p>Configuring and delivering Dynamics 365 business applications that streamline operations and service workflows.</p>
-          </article>
-          <article class="theme-card reveal">
-            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
-            <h3>Business Analysis &amp; Operating Models</h3>
-            <p>Requirements, process design, and operating models that translate strategy into how work gets done.</p>
-          </article>
-          <article class="theme-card reveal">
-            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M18 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2Z"/><path d="M9 13h6M9 17h4"/></svg></div>
-            <h3>Executive Readouts, Proposals &amp; SOWs</h3>
-            <p>Clear, decision-ready deliverables — from board-level readouts to scoped Statements of Work.</p>
-          </article>
-          <article class="theme-card reveal">
-            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></div>
-            <h3>Workshop Facilitation</h3>
-            <p>Structured sessions that surface pain points, align stakeholders, and build shared direction.</p>
-          </article>
-        </div>
-
-        <p class="note-inline">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-          Client names and confidential details are intentionally omitted. Outcomes are described at a high level.
-        </p>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         7 (enhancement). HOW I WORK — consulting approach
-         ================================================================== -->
-    <section class="section section--soft" id="approach" aria-labelledby="approach-title">
-      <div class="container">
-        <header class="section-head section-head--center reveal">
-          <p class="eyebrow">How I Work</p>
-          <h2 class="section-title" id="approach-title">A simple, repeatable approach</h2>
-          <p class="section-intro">
-            A consulting rhythm that moves from understanding the problem to
-            delivering — and improving — the outcome.
-          </p>
-        </header>
-
-        <ol class="process">
-          <li class="process-step reveal">
-            <span class="process-step__num">1</span>
-            <h3>Discover</h3>
-            <p>Understand the business, its goals, and its people through workshops and stakeholder conversations.</p>
-          </li>
-          <li class="process-step reveal">
-            <span class="process-step__num">2</span>
-            <h3>Diagnose</h3>
-            <p>Map current vs. target state and pinpoint where data, AI, and technology create real value.</p>
-          </li>
-          <li class="process-step reveal">
-            <span class="process-step__num">3</span>
-            <h3>Design</h3>
-            <p>Shape the operating model, roadmap, and architecture — with clear priorities and success metrics.</p>
-          </li>
-          <li class="process-step reveal">
-            <span class="process-step__num">4</span>
-            <h3>Deliver</h3>
-            <p>Move from plan to practice with applied delivery, governance-aware rollout, and executive communication.</p>
-          </li>
-          <li class="process-step reveal">
-            <span class="process-step__num">5</span>
-            <h3>Improve</h3>
-            <p>Measure outcomes and build repeatable loops so improvements compound over time.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         5. ARTICLES / INSIGHTS (preview — full list on articles.html)
-         ================================================================== -->
-    <section class="section" id="insights" aria-labelledby="insights-title">
+    <section class="section section--soft" id="insights" aria-labelledby="insights-title">
       <div class="container">
         <div class="articles-head reveal">
           <header class="section-head">
-            <p class="eyebrow">Insights</p>
-            <h2 class="section-title" id="insights-title">Articles &amp; perspectives</h2>
-            <p class="section-intro">
+            <p class="eyebrow" data-i18n="insights.eyebrow">Insights</p>
+            <h2 class="section-title" id="insights-title" data-i18n="insights.title">Articles &amp; perspectives</h2>
+            <p class="section-intro" data-i18n="insights.intro">
               Occasional writing on data, AI, and the human side of digital
               transformation.
             </p>
           </header>
           <a class="link-arrow" href="articles.html">
-            View all insights
+            <span data-i18n="insights.viewall">View all insights</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </a>
         </div>
@@ -524,15 +212,405 @@
     </section>
 
     <!-- =====================================================================
+         SOCIAL HIGHLIGHTS — selected short-form posts (work in progress)
+         ================================================================== -->
+    <section class="section" id="highlights" aria-labelledby="highlights-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="social.eyebrow">Social</p>
+          <h2 class="section-title" id="highlights-title" data-i18n="social.title">Highlights</h2>
+          <p class="section-intro" data-i18n="social.intro">
+            A selection of short-form posts and quick takes — the
+            between-the-articles thinking on data, AI, and technology. This space
+            is a work in progress; posts are on the way.
+          </p>
+        </header>
+
+        <div class="social-grid">
+          <article class="social-card reveal">
+            <div class="social-card__top">
+              <span class="social-card__avatar" aria-hidden="true">JZ</span>
+              <span class="social-card__id">
+                <span class="social-card__name">Jinlun Zhang</span>
+                <span class="social-card__tag" data-i18n="social.1.tag">Data &amp; AI</span>
+              </span>
+              <span class="social-card__soon" data-i18n="social.soon">Coming soon</span>
+            </div>
+            <p class="social-card__text" data-i18n="social.1.text">Short takes on where data and AI actually create value — and where the hype gets ahead of the work.</p>
+            <div class="social-card__foot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5 8.6 10.5"/></svg>
+              <span class="social-card__wip" data-i18n="social.wip">In progress</span>
+            </div>
+          </article>
+
+          <article class="social-card reveal">
+            <div class="social-card__top">
+              <span class="social-card__avatar" aria-hidden="true">JZ</span>
+              <span class="social-card__id">
+                <span class="social-card__name">Jinlun Zhang</span>
+                <span class="social-card__tag" data-i18n="social.2.tag">Tech &amp; Society</span>
+              </span>
+              <span class="social-card__soon" data-i18n="social.soon">Coming soon</span>
+            </div>
+            <p class="social-card__text" data-i18n="social.2.text">Notes on technology's broader impact — ethics, access, and the human side of transformation.</p>
+            <div class="social-card__foot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5 8.6 10.5"/></svg>
+              <span class="social-card__wip" data-i18n="social.wip">In progress</span>
+            </div>
+          </article>
+
+          <article class="social-card reveal">
+            <div class="social-card__top">
+              <span class="social-card__avatar" aria-hidden="true">JZ</span>
+              <span class="social-card__id">
+                <span class="social-card__name">Jinlun Zhang</span>
+                <span class="social-card__tag" data-i18n="social.3.tag">Ways of Working</span>
+              </span>
+              <span class="social-card__soon" data-i18n="social.soon">Coming soon</span>
+            </div>
+            <p class="social-card__text" data-i18n="social.3.text">Practical reflections on consulting, delivery, and helping teams turn strategy into momentum.</p>
+            <div class="social-card__foot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5 8.6 10.5"/></svg>
+              <span class="social-card__wip" data-i18n="social.wip">In progress</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         2. PROFESSIONAL BACKGROUND / EXPERIENCE
+         ================================================================== -->
+    <section class="section section--soft" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="exp.eyebrow">Professional Background</p>
+          <h2 class="section-title" id="experience-title" data-i18n="exp.title">Experience that blends strategy and delivery</h2>
+          <p class="section-intro" data-i18n="exp.intro">
+            A consulting path across digital transformation, data &amp; AI, and
+            business analysis — combining executive-level advisory with hands-on
+            implementation.
+          </p>
+        </header>
+
+        <div class="timeline">
+          <!-- --------------------- BDO Canada --------------------- -->
+          <article class="xp reveal">
+            <div class="xp__aside">
+              <!-- Company logo: assets/img/logo-bdo.png -->
+              <span class="org-logo"><img src="assets/img/logo-bdo.png" alt="BDO Canada logo" /></span>
+              <span class="xp__period" data-i18n="exp.bdo.period">2024 — Present</span>
+              <h3 class="xp__company" data-i18n="exp.bdo.company">BDO Canada</h3>
+              <p class="xp__location" data-i18n="exp.bdo.location">Toronto, Canada · Consulting</p>
+            </div>
+            <div class="xp__main">
+              <p class="xp__role" data-i18n="exp.bdo.role">Consultant, Digital Strategy &amp; Transformation</p>
+              <ul class="xp__list">
+                <li data-i18n="exp.bdo.li1">Facilitate client workshops to surface pain points, define current and target states, and shape transformation roadmaps that align executives on priorities and expected outcomes.</li>
+                <li data-i18n="exp.bdo.li2">Translate benchmarking and solution-option analysis into executive-ready recommendations and presentations.</li>
+                <li data-i18n="exp.bdo.li3">Develop data and AI strategy deliverables — operating models, governance structures, and roadmaps that improve data reliability, analytics readiness, and productivity.</li>
+                <li data-i18n="exp.bdo.li4">Support sales and delivery through proposals, RFP responses, Statements of Work, scope definition, and success metrics.</li>
+              </ul>
+
+              <!-- Selected engagements are described at a high level and
+                   sanitised to protect client-confidential information. -->
+              <div class="xp__projects">
+                <div class="xp__project">
+                  <h4 data-i18n="exp.bdo.proj1.h">AI Evaluation &amp; Governance — “LLM-as-a-Judge” <span>2025 – 2026</span></h4>
+                  <p data-i18n="exp.bdo.proj1.p">Designed an LLM-based evaluation approach to measure alignment between user intent and AI-generated responses in a retrieval-augmented workflow, delivered on Azure. Turned findings into user coaching, prompt-template refinement, and a repeatable evaluation loop — supporting stronger AI adoption and faster turnaround.</p>
+                </div>
+                <div class="xp__project">
+                  <h4 data-i18n="exp.bdo.proj2.h">Global Technology Architecture &amp; Consolidation <span>2026</span></h4>
+                  <p data-i18n="exp.bdo.proj2.p">Led current- and target-state technology architecture for a multinational organisation operating across several countries — mapping today's systems and designing a target model that balances shared platforms, local needs, and future growth. Presented executive-level views to align leadership and inform vendor selection for downstream transformation programs.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- --------------------- RBC --------------------- -->
+          <article class="xp reveal">
+            <div class="xp__aside">
+              <!-- Company logo: assets/img/logo-rbc.png -->
+              <span class="org-logo"><img src="assets/img/logo-rbc.png" alt="Royal Bank of Canada logo" /></span>
+              <span class="xp__period" data-i18n="exp.rbc.period">2023 — 2024</span>
+              <h3 class="xp__company" data-i18n="exp.rbc.company">Royal Bank of Canada</h3>
+              <p class="xp__location" data-i18n="exp.rbc.location">Toronto, Canada · Data &amp; Analytics</p>
+            </div>
+            <div class="xp__main">
+              <p class="xp__role" data-i18n="exp.rbc.role">Artificial Intelligence Consultant</p>
+              <ul class="xp__list">
+                <li data-i18n="exp.rbc.li1">Co-developed an end-to-end natural language processing application to semi-automate data-ontology creation from documentation and data models.</li>
+                <li data-i18n="exp.rbc.li2">Contributed to data labelling, LLM experimentation (HuggingFace), and application / API development within the Data &amp; Analytics CTO organisation.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. ACADEMIC BACKGROUND & SKILLS
+         ================================================================== -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="skills.eyebrow">Academic Background &amp; Skills</p>
+          <h2 class="section-title" id="skills-title" data-i18n="skills.title">A foundation in management, AI, and computer science</h2>
+          <p class="section-intro" data-i18n="skills.intro">
+            Formal training that pairs business management with applied
+            artificial intelligence and a computer-science core.
+          </p>
+        </header>
+
+        <!-- Education -->
+        <div class="edu-grid">
+          <article class="edu-card reveal">
+            <!-- School logo: assets/img/logo-schulich.png -->
+            <span class="org-logo"><img src="assets/img/logo-schulich.png" alt="Schulich School of Business, York University logo" /></span>
+            <div>
+              <h3 class="edu-card__school" data-i18n="edu.schulich.school">Schulich School of Business, York University</h3>
+              <p class="edu-card__degree" data-i18n="edu.schulich.degree">Master of Management in Artificial Intelligence (MMAI)</p>
+              <p class="edu-card__meta" data-i18n="edu.schulich.meta">Business management with a specialised focus on applied AI.</p>
+              <div class="edu-card__tags">
+                <span class="tag--honor" data-i18n="edu.schulich.tag1">Admission Scholarship</span>
+                <span class="tag--honor" data-i18n="edu.schulich.tag2">Graduated with Distinction</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="edu-card reveal">
+            <!-- School logo: assets/img/logo-queens.png -->
+            <span class="org-logo"><img src="assets/img/logo-queens.png" alt="Queen's University logo" /></span>
+            <div>
+              <h3 class="edu-card__school" data-i18n="edu.queens.school">Queen's University</h3>
+              <p class="edu-card__degree" data-i18n="edu.queens.degree">B.Sc. Computer Science — Data Analytics focus</p>
+              <p class="edu-card__meta" data-i18n="edu.queens.meta">Completed with a Professional Internship.</p>
+              <div class="edu-card__tags">
+                <span class="tag--honor" data-i18n="edu.queens.tag1">Distinction (Top 3%)</span>
+                <span class="tag--honor" data-i18n="edu.queens.tag2">Certificate in Business, Smith</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Skills grid -->
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <div class="skill-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polygon points="15.5 8.5 12.5 12.5 8.5 15.5 11.5 11.5 15.5 8.5"/></svg>
+              <h3 data-i18n="skill.1.h">Strategy &amp; Consulting</h3>
+            </div>
+            <div class="chips">
+              <span class="chip" data-i18n="skill.1.c1">Digital strategy</span>
+              <span class="chip" data-i18n="skill.1.c2">Data &amp; AI strategy</span>
+              <span class="chip" data-i18n="skill.1.c3">Operating-model design</span>
+              <span class="chip" data-i18n="skill.1.c4">Roadmap development</span>
+              <span class="chip" data-i18n="skill.1.c5">Executive communication</span>
+              <span class="chip" data-i18n="skill.1.c6">Workshop facilitation</span>
+              <span class="chip" data-i18n="skill.1.c7">Proposals &amp; SOWs</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
+              <h3 data-i18n="skill.2.h">Data, AI &amp; Analytics</h3>
+            </div>
+            <div class="chips">
+              <span class="chip" data-i18n="skill.2.c1">Machine learning</span>
+              <span class="chip" data-i18n="skill.2.c2">Deep learning</span>
+              <span class="chip" data-i18n="skill.2.c3">Natural Language Processing</span>
+              <span class="chip" data-i18n="skill.2.c4">LLM workflows</span>
+              <span class="chip">LLM-as-a-Judge</span>
+              <span class="chip" data-i18n="skill.2.c6">Prompt / Response evaluation</span>
+              <span class="chip" data-i18n="skill.2.c7">Data engineering &amp; analysis</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 3-6 9 6 9M16 3l6 9-6 9"/><path d="M13 4 11 20"/></svg>
+              <h3 data-i18n="skill.3.h">Technology &amp; Delivery</h3>
+            </div>
+            <div class="chips">
+              <span class="chip">Azure AI Foundry</span>
+              <span class="chip">Microsoft Fabric</span>
+              <span class="chip">Databricks</span>
+              <span class="chip" data-i18n="skill.3.c4">Solution architecture</span>
+              <span class="chip" data-i18n="skill.3.c5">API development</span>
+              <span class="chip">GitHub</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3-5 3V6a2 2 0 0 1 2-2Z"/></svg>
+              <h3 data-i18n="skill.4.h">Business Analysis &amp; Change</h3>
+            </div>
+            <div class="chips">
+              <span class="chip" data-i18n="skill.4.c1">Requirements &amp; user stories</span>
+              <span class="chip" data-i18n="skill.4.c2">Current / target-state analysis</span>
+              <span class="chip" data-i18n="skill.4.c3">Stakeholder alignment</span>
+              <span class="chip" data-i18n="skill.4.c4">Governance-aware rollout</span>
+              <span class="chip" data-i18n="skill.4.c5">Agile delivery</span>
+              <span class="chip" data-i18n="skill.4.c6">Change enablement</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M18 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2Z"/><path d="M8 13h8M8 17h6"/></svg>
+              <h3 data-i18n="skill.5.h">Tools / Platforms</h3>
+            </div>
+            <div class="chips">
+              <span class="chip">Python</span>
+              <span class="chip">SQL / PostgreSQL</span>
+              <span class="chip">Power BI</span>
+              <span class="chip">Tableau</span>
+              <span class="chip">Azure DevOps</span>
+              <span class="chip">Microsoft Dynamics 365</span>
+              <span class="chip">Microsoft Fabric</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg>
+              <h3 data-i18n="skill.6.h">Languages</h3>
+            </div>
+            <div class="chips">
+              <span class="chip" data-i18n="skill.6.c1">English — Fluent</span>
+              <span class="chip" data-i18n="skill.6.c2">Mandarin — Fluent</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. SELECTED WORK / PROJECT THEMES
+         ================================================================== -->
+    <section class="section section--soft" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="work.eyebrow">Selected Work</p>
+          <h2 class="section-title" id="work-title" data-i18n="work.title">The kinds of problems I help solve</h2>
+          <p class="section-intro" data-i18n="work.intro">
+            Representative themes from recent engagements. Details are kept at a
+            high level to respect client confidentiality.
+          </p>
+        </header>
+
+        <div class="themes-grid">
+          <article class="theme-card reveal">
+            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 5-7"/></svg></div>
+            <h3 data-i18n="work.1.h">Data &amp; AI Strategy</h3>
+            <p data-i18n="work.1.p">Operating models, governance, and roadmaps that make data and AI investment pay off.</p>
+          </article>
+          <article class="theme-card reveal">
+            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+            <h3 data-i18n="work.2.h">AI / ML Use-Case Evaluation</h3>
+            <p data-i18n="work.2.p">Assessing feasibility, value, and risk to prioritise the use cases worth pursuing.</p>
+          </article>
+          <article class="theme-card reveal">
+            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.2 7.9 8 9 4.8-1.1 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <h3 data-i18n="work.3.h">LLM Evaluation &amp; Governance</h3>
+            <p data-i18n="work.3.p">Structured evaluation of AI outputs — alignment, quality, and responsible-use guardrails.</p>
+          </article>
+          <article class="theme-card reveal">
+            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+            <h3 data-i18n="work.4.h">Digital Transformation Roadmaps</h3>
+            <p data-i18n="work.4.p">Current-to-target journeys sequenced by value, feasibility, and organisational readiness.</p>
+          </article>
+          <article class="theme-card reveal">
+            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div>
+            <h3 data-i18n="work.5.h">Microsoft Dynamics 365 Applications</h3>
+            <p data-i18n="work.5.p">Configuring and delivering Dynamics 365 business applications that streamline operations and service workflows.</p>
+          </article>
+          <article class="theme-card reveal">
+            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+            <h3 data-i18n="work.6.h">Business Analysis &amp; Operating Models</h3>
+            <p data-i18n="work.6.p">Requirements, process design, and operating models that translate strategy into how work gets done.</p>
+          </article>
+          <article class="theme-card reveal">
+            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M18 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2Z"/><path d="M9 13h6M9 17h4"/></svg></div>
+            <h3 data-i18n="work.7.h">Executive Readouts, Proposals &amp; SOWs</h3>
+            <p data-i18n="work.7.p">Clear, decision-ready deliverables — from board-level readouts to scoped Statements of Work.</p>
+          </article>
+          <article class="theme-card reveal">
+            <div class="theme-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></div>
+            <h3 data-i18n="work.8.h">Workshop Facilitation</h3>
+            <p data-i18n="work.8.p">Structured sessions that surface pain points, align stakeholders, and build shared direction.</p>
+          </article>
+        </div>
+
+        <p class="note-inline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+          <span data-i18n="work.note">Client names and confidential details are intentionally omitted. Outcomes are described at a high level.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         7 (enhancement). HOW I WORK — consulting approach
+         ================================================================== -->
+    <section class="section" id="approach" aria-labelledby="approach-title">
+      <div class="container">
+        <header class="section-head section-head--center reveal">
+          <p class="eyebrow" data-i18n="approach.eyebrow">How I Work</p>
+          <h2 class="section-title" id="approach-title" data-i18n="approach.title">A simple, repeatable approach</h2>
+          <p class="section-intro" data-i18n="approach.intro">
+            A consulting rhythm that moves from understanding the problem to
+            delivering — and improving — the outcome.
+          </p>
+        </header>
+
+        <ol class="process">
+          <li class="process-step reveal">
+            <span class="process-step__num">1</span>
+            <h3 data-i18n="approach.1.h">Discover</h3>
+            <p data-i18n="approach.1.p">Understand the business, its goals, and its people through workshops and stakeholder conversations.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="process-step__num">2</span>
+            <h3 data-i18n="approach.2.h">Diagnose</h3>
+            <p data-i18n="approach.2.p">Map current vs. target state and pinpoint where data, AI, and technology create real value.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="process-step__num">3</span>
+            <h3 data-i18n="approach.3.h">Design</h3>
+            <p data-i18n="approach.3.p">Shape the operating model, roadmap, and architecture — with clear priorities and success metrics.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="process-step__num">4</span>
+            <h3 data-i18n="approach.4.h">Deliver</h3>
+            <p data-i18n="approach.4.p">Move from plan to practice with applied delivery, governance-aware rollout, and executive communication.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="process-step__num">5</span>
+            <h3 data-i18n="approach.5.h">Improve</h3>
+            <p data-i18n="approach.5.p">Measure outcomes and build repeatable loops so improvements compound over time.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- =====================================================================
          6. CONTACT
          ================================================================== -->
-    <section class="section section--soft" id="contact" aria-labelledby="contact-title">
+    <section class="section section--contact" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="contact-card reveal">
           <div>
-            <p class="eyebrow">Contact</p>
-            <h2 class="contact-card__title" id="contact-title">Let's start a conversation</h2>
-            <p class="contact-card__text">
+            <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+            <h2 class="contact-card__title" id="contact-title" data-i18n="contact.title">Let's start a conversation</h2>
+            <p class="contact-card__text" data-i18n="contact.text">
               I'm always glad to connect on consulting, digital transformation,
               AI &amp; data strategy, and professional networking. Reach out and
               I'll get back to you.
@@ -541,9 +619,9 @@
               <!-- Static-site friendly: mailto opens the visitor's email client -->
               <a class="btn" href="mailto:jinzhang15@outlook.com">
                 <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-                Email me
+                <span data-i18n="contact.btn.email">Email me</span>
               </a>
-              <a class="btn btn--ghost" href="https://www.linkedin.com/in/jin-zhang-1ba407171/" target="_blank" rel="noopener">
+              <a class="btn btn--ghost" href="https://www.linkedin.com/in/jin-zhang-1ba407171/" target="_blank" rel="noopener" data-i18n="contact.btn.linkedin">
                 Connect on LinkedIn
               </a>
             </div>
@@ -553,14 +631,14 @@
             <a class="contact-method" href="mailto:jinzhang15@outlook.com">
               <span class="contact-method__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
               <span>
-                <span class="contact-method__label">Email</span>
+                <span class="contact-method__label" data-i18n="contact.method.email">Email</span>
                 <span class="contact-method__value">jinzhang15@outlook.com</span>
               </span>
             </a>
             <a class="contact-method" href="https://www.linkedin.com/in/jin-zhang-1ba407171/" target="_blank" rel="noopener">
               <span class="contact-method__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-10h4v1.5"/><rect x="2" y="9" width="4" height="11"/><circle cx="4" cy="4" r="2"/></svg></span>
               <span>
-                <span class="contact-method__label">LinkedIn</span>
+                <span class="contact-method__label" data-i18n="contact.method.linkedin">LinkedIn</span>
                 <span class="contact-method__value">/in/jin-zhang-1ba407171</span>
               </span>
             </a>
@@ -580,39 +658,40 @@
           <a class="brand" href="#top">
             <span class="brand__mark" aria-hidden="true">JZ</span>
             <span class="brand__name">Jinlun Zhang
-              <span class="brand__role">Digital Strategy &amp; Transformation</span>
+              <span class="brand__role" data-i18n="brand.role">Business, Data &amp; AI</span>
             </span>
           </a>
-          <p class="footer-about">
+          <p class="footer-about" data-i18n="footer.about">
             Consultant working at the intersection of business strategy, data,
             AI, and technology-enabled operating models.
           </p>
         </div>
 
         <div class="footer-col">
-          <h4>Explore</h4>
+          <h4 data-i18n="footer.explore">Explore</h4>
           <ul>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#work">Selected Work</a></li>
-            <li><a href="#approach">Approach</a></li>
-            <li><a href="articles.html">Insights</a></li>
+            <li><a href="#experience" data-i18n="footer.link.experience">Experience</a></li>
+            <li><a href="#skills" data-i18n="footer.link.skills">Skills</a></li>
+            <li><a href="#work" data-i18n="footer.link.work">Selected Work</a></li>
+            <li><a href="#approach" data-i18n="footer.link.approach">Approach</a></li>
+            <li><a href="#highlights" data-i18n="footer.link.highlights">Highlights</a></li>
+            <li><a href="articles.html" data-i18n="footer.link.insights">Insights</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <ul>
-            <li><a href="mailto:jinzhang15@outlook.com">Email</a></li>
-            <li><a href="https://www.linkedin.com/in/jin-zhang-1ba407171/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:jinzhang15@outlook.com" data-i18n="footer.link.email">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/jin-zhang-1ba407171/" target="_blank" rel="noopener" data-i18n="footer.link.linkedin">LinkedIn</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; <span id="year">2026</span> Jinlun Zhang. All rights reserved.</p>
+        <p>&copy; <span id="year">2026</span> <span data-i18n="footer.rights">Jinlun Zhang. All rights reserved.</span></p>
         <a class="to-top" href="#top">
-          Back to top
+          <span data-i18n="footer.totop">Back to top</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
         </a>
       </div>
@@ -622,5 +701,6 @@
   <!-- ===================== SCRIPTS ===================== -->
   <script src="data/articles.js"></script>
   <script src="script.js"></script>
+  <script src="i18n.js"></script>
 </body>
 </html>

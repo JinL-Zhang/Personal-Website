@@ -19,7 +19,7 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
   <!-- HEADER — links point back to the home page sections -->
   <header class="site-header" id="top">
@@ -28,21 +28,26 @@
         <a class="brand" href="index.html" aria-label="Jinlun Zhang — home">
           <span class="brand__mark" aria-hidden="true">JZ</span>
           <span class="brand__name">Jinlun Zhang
-            <span class="brand__role">Digital Strategy &amp; Transformation</span>
+            <span class="brand__role" data-i18n="brand.role">Business, Data &amp; AI</span>
           </span>
         </a>
 
         <ul class="nav-links" id="nav-menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#experience">Experience</a></li>
-          <li><a href="index.html#skills">Skills</a></li>
-          <li><a href="index.html#work">Work</a></li>
-          <li><a href="index.html#approach">Approach</a></li>
-          <li><a href="index.html#insights">Insights</a></li>
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="index.html#insights" data-i18n="nav.insights">Insights</a></li>
+          <li><a href="index.html#highlights" data-i18n="nav.highlights">Highlights</a></li>
+          <li><a href="index.html#experience" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="index.html#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="index.html#work" data-i18n="nav.work">Work</a></li>
+          <li><a href="index.html#approach" data-i18n="nav.approach">Approach</a></li>
         </ul>
 
         <div class="nav-cta">
-          <a class="btn" href="index.html#contact">Contact</a>
+          <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language" data-lang-toggle>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.9 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.9-4-9s1.5-6.4 4-9Z"/></svg>
+            <span class="lang-toggle__label">中文</span>
+          </button>
+          <a class="btn" href="index.html#contact" data-i18n="nav.contact">Contact</a>
         </div>
 
         <button class="nav-toggle" type="button"
@@ -58,9 +63,9 @@
     <section class="section" aria-labelledby="insights-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="eyebrow">Insights</p>
-          <h1 class="section-title" id="insights-title">Articles &amp; perspectives</h1>
-          <p class="section-intro">
+          <p class="eyebrow" data-i18n="articles.eyebrow">Insights</p>
+          <h1 class="section-title" id="insights-title" data-i18n="articles.title">Articles &amp; perspectives</h1>
+          <p class="section-intro" data-i18n="articles.intro">
             Writing on data, AI, and the human side of digital transformation.
             New pieces are added over time — published articles open on this
             site, and link to their original source where relevant.
@@ -82,36 +87,37 @@
           <a class="brand" href="index.html">
             <span class="brand__mark" aria-hidden="true">JZ</span>
             <span class="brand__name">Jinlun Zhang
-              <span class="brand__role">Digital Strategy &amp; Transformation</span>
+              <span class="brand__role" data-i18n="brand.role">Business, Data &amp; AI</span>
             </span>
           </a>
-          <p class="footer-about">
+          <p class="footer-about" data-i18n="footer.about">
             Consultant working at the intersection of business strategy, data,
             AI, and technology-enabled operating models.
           </p>
         </div>
         <div class="footer-col">
-          <h4>Explore</h4>
+          <h4 data-i18n="footer.explore">Explore</h4>
           <ul>
-            <li><a href="index.html#experience">Experience</a></li>
-            <li><a href="index.html#skills">Skills</a></li>
-            <li><a href="index.html#work">Selected Work</a></li>
-            <li><a href="index.html#approach">Approach</a></li>
-            <li><a href="articles.html">Insights</a></li>
+            <li><a href="index.html#experience" data-i18n="footer.link.experience">Experience</a></li>
+            <li><a href="index.html#skills" data-i18n="footer.link.skills">Skills</a></li>
+            <li><a href="index.html#work" data-i18n="footer.link.work">Selected Work</a></li>
+            <li><a href="index.html#approach" data-i18n="footer.link.approach">Approach</a></li>
+            <li><a href="index.html#highlights" data-i18n="footer.link.highlights">Highlights</a></li>
+            <li><a href="articles.html" data-i18n="footer.link.insights">Insights</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer.connect">Connect</h4>
           <ul>
-            <li><a href="mailto:jinzhang15@outlook.com">Email</a></li>
-            <li><a href="https://www.linkedin.com/in/jin-zhang-1ba407171/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:jinzhang15@outlook.com" data-i18n="footer.link.email">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/jin-zhang-1ba407171/" target="_blank" rel="noopener" data-i18n="footer.link.linkedin">LinkedIn</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; <span id="year">2026</span> Jinlun Zhang. All rights reserved.</p>
+        <p>&copy; <span id="year">2026</span> <span data-i18n="footer.rights">Jinlun Zhang. All rights reserved.</span></p>
         <a class="to-top" href="#top">
-          Back to top
+          <span data-i18n="footer.totop">Back to top</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
         </a>
       </div>
@@ -120,5 +126,6 @@
 
   <script src="data/articles.js"></script>
   <script src="script.js"></script>
+  <script src="i18n.js"></script>
 </body>
 </html>
