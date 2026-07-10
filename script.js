@@ -414,6 +414,106 @@
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg> ';
   }
 
+  /* ---------- 7. social post reader (post.html?id=…) --------------------- */
+  function initPostReader() {
+    const root = $("#post-root");
+    if (!root) return;
+
+    const id = new URLSearchParams(window.location.search).get("id");
+    const list = Array.isArray(window.POSTS) ? window.POSTS : [];
+    const post = list.find((p) => p.id === id);
+
+    // Not found ----------------------------------------------------------
+    if (!post) {
+      root.innerHTML =
+        '<a class="reader__back" href="index.html#highlights">' +
+        backArrow() +
+        "All highlights</a>" +
+        '<h1 class="reader__title">Post not found</h1>' +
+        '<p class="reader__deck">Sorry, we couldn\'t find that post. It may have moved or is not published yet.</p>' +
+        '<p><a class="btn" href="index.html#highlights">Back to highlights</a></p>';
+      return;
+    }
+
+    // Render -------------------------------------------------------------
+    document.title = post.title + " — Jinlun Zhang";
+    const metaDesc = $('meta[name="description"]');
+    if (metaDesc && post.excerpt) metaDesc.setAttribute("content", post.excerpt);
+
+    const dateLabel = formatDate(post.date);
+    const frag = document.createDocumentFragment();
+
+    // Back link
+    const back = document.createElement("a");
+    back.className = "reader__back";
+    back.href = "index.html#highlights";
+    back.innerHTML = backArrow() + "All highlights";
+    frag.appendChild(back);
+
+    // Meta row
+    const meta = document.createElement("div");
+    meta.className = "reader__meta";
+    const pill = document.createElement("span");
+    pill.className = "pill";
+    pill.textContent = post.category || "Post";
+    meta.appendChild(pill);
+    if (dateLabel) {
+      const dot = document.createElement("span");
+      dot.textContent = "•";
+      const date = document.createElement("span");
+      date.textContent = dateLabel;
+      meta.append(dot, date);
+    }
+    frag.appendChild(meta);
+
+    // Title + deck
+    const h1 = document.createElement("h1");
+    h1.className = "reader__title";
+    h1.textContent = post.title;
+    frag.appendChild(h1);
+
+    if (post.deck) {
+      const deck = document.createElement("p");
+      deck.className = "reader__deck";
+      deck.textContent = post.deck;
+      frag.appendChild(deck);
+    }
+
+    // Cover
+    if (post.cover) {
+      const cover = document.createElement("img");
+      cover.className = "reader__cover";
+      cover.src = post.cover;
+      cover.alt = "";
+      frag.appendChild(cover);
+    }
+
+    // Body (author-controlled HTML from data/posts.js)
+    const content = document.createElement("div");
+    content.className = "reader__content";
+    content.innerHTML = post.body || "";
+    frag.appendChild(content);
+
+    // Footer row
+    const footer = document.createElement("div");
+    footer.className = "reader__footer";
+    const backBtn = document.createElement("a");
+    backBtn.className = "link-arrow";
+    backBtn.href = "index.html#highlights";
+    backBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg> All highlights';
+    const mail = document.createElement("a");
+    mail.className = "btn btn--ghost";
+    mail.href = "mailto:jinzhang15@outlook.com";
+    mail.textContent = "Get in touch";
+    footer.append(backBtn, mail);
+    frag.appendChild(footer);
+
+    root.innerHTML = "";
+    root.appendChild(frag);
+    window.scrollTo(0, 0);
+  }
+
   /* ---------- boot ------------------------------------------------------- */
   function init() {
     initHeaderScroll();
@@ -422,6 +522,7 @@
     initToTop();
     initGrids();
     initReader();
+    initPostReader();
     initReveal();
   }
 

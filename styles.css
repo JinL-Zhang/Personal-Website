@@ -1300,6 +1300,36 @@ strong { color: var(--ink-soft); font-weight: 600; }
   font-size: 0.8rem; font-weight: 600; color: var(--muted);
 }
 
+/* Real (clickable) post card variant */
+.social-card--post { text-decoration: none; color: inherit; cursor: pointer; }
+.social-card__date {
+  flex: none;
+  font-size: 0.76rem; font-weight: 600; color: var(--muted);
+  white-space: nowrap;
+}
+.social-card__title {
+  font-weight: 700; color: var(--ink);
+  font-size: 1.08rem; margin: 0;
+  letter-spacing: -0.01em;
+  transition: color var(--t-fast);
+}
+.social-card--post:hover .social-card__title { color: var(--brand-700); }
+.social-card__readmore {
+  margin-left: auto;
+  font-size: 0.82rem; font-weight: 600; color: var(--brand-700);
+}
+
+/* Images and signature inside the post/article reader */
+.reader__content img {
+  border-radius: var(--r-md);
+  margin: 1.6rem auto;
+  box-shadow: var(--shadow-sm);
+}
+.reader__content .post-sign {
+  margin-top: 1.75rem;
+  color: var(--muted);
+}
+
 /* -----------------------------------------------------------------------------
    18. Responsive breakpoints
 --------------------------------------------------------------------------- */
