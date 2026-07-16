@@ -13,6 +13,7 @@ Personal Website/
 ├── index.html                     # Home + all main sections
 ├── articles.html                  # Insights: full list of articles
 ├── article.html                   # Single-article reader (loads ?id=…)
+├── post.html                      # Single-highlight reader (loads ?id=…)
 ├── 404.html                       # Friendly not-found page
 ├── styles.css                     # All styling (design tokens at the top)
 ├── script.js                      # Navigation, reveals, article rendering
@@ -20,11 +21,13 @@ Personal Website/
 ├── .gitignore                     # Keeps the résumé PDF out of the public repo
 ├── README.md                      # This file
 ├── data/
-│   └── articles.js                # ← Your articles live here (edit this)
+│   ├── articles.js                # ← Long-form Insights live here
+│   └── posts.js                   # ← Highlight posts live here
 └── assets/
     ├── favicon.svg                # Site icon (JZ monogram)
     └── img/
-        ├── profile.png            # ← Your profile photo
+      ├── profile.webp           # Optimized profile photo used on the site
+      ├── profile-social.jpg     # Social-share preview image
         ├── logo-bdo.png           # Company logos (experience section)
         ├── logo-rbc.png
         ├── logo-queens.png        # School logos (education section)
@@ -39,16 +42,18 @@ Personal Website/
 
 | What                | Put it here                              | Then update                                                        |
 | ------------------- | ---------------------------------------- | ------------------------------------------------------------------ |
-| **Profile photo**   | `assets/img/profile.png`                 | Replace the file (keep the name) — no code change needed.          |
+| **Profile photo**   | `assets/img/profile.webp`                | Replace the optimized file, or update its path in `index.html`.    |
 | **Company / school logos** | `assets/img/logo-*.png`           | Replace the matching file (keep the name) to update a logo.        |
 | **Article covers**  | `assets/img/articles/`                   | Reference the path in `data/articles.js` (`cover: "..."`).         |
 | **Article content** | `data/articles.js`                       | Add/edit article objects (see below).                              |
+| **Highlight images** | `assets/img/social/`                    | Reference optimized WebP images from `data/posts.js`.              |
+| **Highlight content** | `data/posts.js`                        | Add/edit post objects; each opens through `post.html?id=...`.       |
 | **Contact email**   | `index.html` (and article/footer links)  | Search for `jinzhang15@outlook.com` and update if it ever changes. |
 | **LinkedIn URL**    | `index.html`, `articles.html`, `article.html` | Search for `linkedin.com/in/` and update if it changes.       |
 
-> Tip: to swap the photo but keep a different filename, update the
-> `src="assets/img/profile.png"` reference in `index.html` (look for the
-> comment `<!-- Profile photo... -->`).
+> Tip: keep editable Word documents and original artwork in the ignored source
+> folders/files listed in `.gitignore`. Only optimized web assets should be
+> committed and deployed.
 
 > **Résumé:** the site intentionally does **not** link to a résumé PDF, and
 > `.gitignore` keeps any `*.pdf` out of the public repository. To offer a
@@ -90,9 +95,13 @@ Open `data/articles.js` and copy an existing `{ … }` block to the **top** of t
   any upcoming drafts.
 - The home page shows the **first 3**; the full list lives on `articles.html`.
 
-> The example “Quantum Computing” entry currently contains a **summary** with a
-> link to the original LinkedIn article. To host the full text here, paste it
-> into that entry’s `body` field.
+The “Quantum Computing” entry is fully self-hosted in `data/articles.js`.
+
+### Adding a Highlight post
+
+Add a post object to `data/posts.js`, place its optimized images in
+`assets/img/social/`, then add or update its card in the `#highlights` section
+of `index.html`. Each full post opens at `post.html?id=your-post-id`.
 
 ---
 

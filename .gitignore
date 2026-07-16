@@ -5,6 +5,15 @@
 *.pdf
 assets/resume/
 
+# Authoring sources — kept locally, not deployed with the public site
+assets/social_post/
+assets/img/profile.png
+assets/img/social/*.png
+assets/img/BDOLogo.png
+assets/img/RBC.png
+assets/img/schulich.png
+assets/img/Queens-university-logo-horizontal-digital-rgb-full-colour-1024x385.png
+
 # Editor / workspace settings
 .vscode/
 

@@ -17,6 +17,34 @@
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
+  const CATEGORY_I18N_KEYS = {
+    "Emerging Technology": "category.emergingTechnology",
+    "Data & AI Strategy": "category.dataAiStrategy",
+    "AI Governance": "category.aiGovernance",
+    Reflections: "category.reflections",
+    Insight: "category.insight",
+    Draft: "category.draft",
+    Post: "category.post",
+  };
+
+  function setI18nText(element, key, fallback) {
+    element.textContent = fallback;
+    if (key) element.dataset.i18n = key;
+    return element;
+  }
+
+  function setI18nDate(element, iso) {
+    element.textContent = formatDate(iso);
+    element.dataset.i18nDate = iso;
+    return element;
+  }
+
+  function appendMetaValue(meta, value) {
+    const dot = document.createElement("span");
+    dot.textContent = "•";
+    meta.append(dot, value);
+  }
+
   /** Format an ISO date (YYYY-MM-DD) as e.g. "May 2024". Returns "" if invalid. */
   function formatDate(iso) {
     if (!iso) return "";
@@ -26,11 +54,10 @@
   }
 
   /** Rough reading-time estimate from an HTML string (~200 wpm). */
-  function readingTimeFromHtml(html) {
+  function readingMinutesFromHtml(html) {
     const text = String(html || "").replace(/<[^>]*>/g, " ");
     const words = (text.match(/\S+/g) || []).length;
-    const mins = Math.max(1, Math.round(words / 200));
-    return mins + " min read";
+    return Math.max(1, Math.round(words / 200));
   }
 
   /** Order articles: published (newest first), then upcoming drafts. */
@@ -150,7 +177,7 @@
       const media = document.createElement("div");
       media.className = "article-card__media";
       const tag = document.createElement("span");
-      tag.textContent = "Coming soon";
+      setI18nText(tag, "ui.comingSoon", "Coming soon");
       media.appendChild(tag);
 
       const body = document.createElement("div");
@@ -160,7 +187,7 @@
       meta.className = "article-card__meta";
       const pill = document.createElement("span");
       pill.className = "pill";
-      pill.textContent = category;
+      setI18nText(pill, CATEGORY_I18N_KEYS[category], category);
       meta.appendChild(pill);
 
       const title = document.createElement("h3");
@@ -175,7 +202,7 @@
       foot.className = "article-card__foot";
       const note = document.createElement("span");
       note.style.cssText = "font-weight:600;color:var(--muted);font-size:.9rem;";
-      note.textContent = "In progress";
+      setI18nText(note, "ui.inProgress", "In progress");
       foot.appendChild(note);
 
       body.append(meta, title, excerpt, foot);
@@ -194,6 +221,7 @@
       img.src = article.cover;
       img.alt = ""; // decorative; the title link carries the accessible name
       img.loading = "lazy";
+      img.decoding = "async";
       mediaLink.appendChild(img);
     }
 
@@ -204,14 +232,11 @@
     meta.className = "article-card__meta";
     const pill = document.createElement("span");
     pill.className = "pill";
-    pill.textContent = category;
+    setI18nText(pill, CATEGORY_I18N_KEYS[category], category);
     meta.appendChild(pill);
     if (dateLabel) {
-      const dot = document.createElement("span");
-      dot.textContent = "•";
       const date = document.createElement("span");
-      date.textContent = dateLabel;
-      meta.append(dot, date);
+      appendMetaValue(meta, setI18nDate(date, article.date));
     }
 
     const title = document.createElement("h3");
@@ -231,7 +256,7 @@
     read.className = "link-arrow";
     read.href = href;
     read.innerHTML =
-      'Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
+      '<span data-i18n="ui.readArticle">Read article</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
     foot.appendChild(read);
 
     body.append(meta, title, excerpt, foot);
@@ -251,6 +276,9 @@
       const empty = document.createElement("p");
       empty.className = "section-intro";
       empty.textContent = grid.dataset.empty || "No articles yet.";
+      empty.dataset.i18n = grid.id === "insights-grid"
+        ? "ui.emptyPreview"
+        : "ui.emptyArticles";
       grid.appendChild(empty);
       return;
     }
@@ -278,10 +306,10 @@
       root.innerHTML =
         '<a class="reader__back" href="articles.html">' +
         backArrow() +
-        "All insights</a>" +
-        '<h1 class="reader__title">Article not found</h1>' +
-        '<p class="reader__deck">Sorry, we couldn\'t find that article. It may have moved or is not published yet.</p>' +
-        '<p><a class="btn" href="articles.html">Browse all insights</a></p>';
+        '<span data-i18n="reader.allInsights">All insights</span></a>' +
+        '<h1 class="reader__title" data-i18n="reader.articleNotFound">Article not found</h1>' +
+        '<p class="reader__deck" data-i18n="reader.articleNotFoundText">Sorry, we couldn\'t find that article. It may have moved or is not published yet.</p>' +
+        '<p><a class="btn" href="articles.html" data-i18n="reader.browseInsights">Browse all insights</a></p>';
       return;
     }
 
@@ -291,12 +319,17 @@
       root.innerHTML =
         '<a class="reader__back" href="articles.html">' +
         backArrow() +
-        "All insights</a>" +
+        '<span data-i18n="reader.allInsights">All insights</span></a>' +
         '<div class="reader__meta"><span class="pill"></span></div>' +
         '<h1 class="reader__title"></h1>' +
-        '<p class="reader__deck">This article is in progress and isn\'t published yet. Please check back soon.</p>' +
-        '<p><a class="btn" href="articles.html">Browse all insights</a></p>';
-      $(".reader__meta .pill", root).textContent = article.category || "Draft";
+        '<p class="reader__deck" data-i18n="reader.articleDraftText">This article is in progress and isn\'t published yet. Please check back soon.</p>' +
+        '<p><a class="btn" href="articles.html" data-i18n="reader.browseInsights">Browse all insights</a></p>';
+      const draftCategory = article.category || "Draft";
+      setI18nText(
+        $(".reader__meta .pill", root),
+        CATEGORY_I18N_KEYS[draftCategory],
+        draftCategory
+      );
       $(".reader__title", root).textContent = article.title;
       return;
     }
@@ -307,7 +340,8 @@
     if (metaDesc && article.excerpt) metaDesc.setAttribute("content", article.excerpt);
 
     const dateLabel = formatDate(article.date);
-    const reading = article.readingTime || readingTimeFromHtml(article.body);
+    const readingMinutes = parseInt(article.readingTime, 10) ||
+      readingMinutesFromHtml(article.body);
 
     const frag = document.createDocumentFragment();
 
@@ -315,7 +349,8 @@
     const back = document.createElement("a");
     back.className = "reader__back";
     back.href = "articles.html";
-    back.innerHTML = backArrow() + "All insights";
+    back.innerHTML = backArrow() +
+      '<span data-i18n="reader.allInsights">All insights</span>';
     frag.appendChild(back);
 
     // Meta row
@@ -323,15 +358,22 @@
     meta.className = "reader__meta";
     const pill = document.createElement("span");
     pill.className = "pill";
-    pill.textContent = article.category || "Insight";
+    const articleCategory = article.category || "Insight";
+    setI18nText(
+      pill,
+      CATEGORY_I18N_KEYS[articleCategory],
+      articleCategory
+    );
     meta.appendChild(pill);
-    [dateLabel, reading].filter(Boolean).forEach((txt) => {
-      const dot = document.createElement("span");
-      dot.textContent = "•";
-      const span = document.createElement("span");
-      span.textContent = txt;
-      meta.append(dot, span);
-    });
+    if (dateLabel) {
+      appendMetaValue(meta, setI18nDate(document.createElement("span"), article.date));
+    }
+    if (readingMinutes) {
+      const reading = document.createElement("span");
+      reading.textContent = readingMinutes + " min read";
+      reading.dataset.i18nMinutes = String(readingMinutes);
+      appendMetaValue(meta, reading);
+    }
     frag.appendChild(meta);
 
     // Title + deck
@@ -351,11 +393,18 @@
     if (article.externalUrl) {
       const note = document.createElement("p");
       note.className = "editor-note";
-      note.innerHTML =
-        "The full, original version of this article is published on LinkedIn. " +
-        'A summary is provided below — <a href="' +
-        encodeURI(article.externalUrl) +
-        '" target="_blank" rel="noopener">read the original ↗</a>.';
+      const noteLead = document.createElement("span");
+      setI18nText(
+        noteLead,
+        "reader.externalLead",
+        "The full, original version of this article is published on LinkedIn. A summary is provided below —"
+      );
+      const originalLink = document.createElement("a");
+      originalLink.href = article.externalUrl;
+      originalLink.target = "_blank";
+      originalLink.rel = "noopener";
+      setI18nText(originalLink, "reader.externalLink", "read the original ↗");
+      note.append(noteLead, " ", originalLink, ".");
       frag.appendChild(note);
     }
 
@@ -365,6 +414,8 @@
       cover.className = "reader__cover";
       cover.src = article.cover;
       cover.alt = "";
+      cover.decoding = "async";
+      cover.fetchPriority = "high";
       frag.appendChild(cover);
     }
 
@@ -379,13 +430,13 @@
       const callout = document.createElement("div");
       callout.className = "reader__callout";
       callout.innerHTML =
-        "<p>Want the complete piece with full detail?</p>";
+        '<p data-i18n="reader.completePrompt">Want the complete piece with full detail?</p>';
       const cta = document.createElement("a");
       cta.className = "btn";
       cta.href = article.externalUrl;
       cta.target = "_blank";
       cta.rel = "noopener";
-      cta.textContent = "Read the full article on LinkedIn";
+      setI18nText(cta, "reader.readLinkedIn", "Read the full article on LinkedIn");
       callout.appendChild(cta);
       frag.appendChild(callout);
     }
@@ -397,11 +448,11 @@
     backBtn.className = "link-arrow";
     backBtn.href = "articles.html";
     backBtn.innerHTML =
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg> All insights';
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg><span data-i18n="reader.allInsights">All insights</span>';
     const mail = document.createElement("a");
     mail.className = "btn btn--ghost";
     mail.href = "mailto:jinzhang15@outlook.com";
-    mail.textContent = "Get in touch";
+    setI18nText(mail, "ui.getInTouch", "Get in touch");
     footer.append(backBtn, mail);
     frag.appendChild(footer);
 
@@ -428,10 +479,10 @@
       root.innerHTML =
         '<a class="reader__back" href="index.html#highlights">' +
         backArrow() +
-        "All highlights</a>" +
-        '<h1 class="reader__title">Post not found</h1>' +
-        '<p class="reader__deck">Sorry, we couldn\'t find that post. It may have moved or is not published yet.</p>' +
-        '<p><a class="btn" href="index.html#highlights">Back to highlights</a></p>';
+        '<span data-i18n="reader.allHighlights">All highlights</span></a>' +
+        '<h1 class="reader__title" data-i18n="reader.postNotFound">Post not found</h1>' +
+        '<p class="reader__deck" data-i18n="reader.postNotFoundText">Sorry, we couldn\'t find that post. It may have moved or is not published yet.</p>' +
+        '<p><a class="btn" href="index.html#highlights" data-i18n="reader.backHighlights">Back to highlights</a></p>';
       return;
     }
 
@@ -447,7 +498,8 @@
     const back = document.createElement("a");
     back.className = "reader__back";
     back.href = "index.html#highlights";
-    back.innerHTML = backArrow() + "All highlights";
+    back.innerHTML = backArrow() +
+      '<span data-i18n="reader.allHighlights">All highlights</span>';
     frag.appendChild(back);
 
     // Meta row
@@ -455,14 +507,12 @@
     meta.className = "reader__meta";
     const pill = document.createElement("span");
     pill.className = "pill";
-    pill.textContent = post.category || "Post";
+    const postCategory = post.category || "Post";
+    setI18nText(pill, CATEGORY_I18N_KEYS[postCategory], postCategory);
     meta.appendChild(pill);
     if (dateLabel) {
-      const dot = document.createElement("span");
-      dot.textContent = "•";
       const date = document.createElement("span");
-      date.textContent = dateLabel;
-      meta.append(dot, date);
+      appendMetaValue(meta, setI18nDate(date, post.date));
     }
     frag.appendChild(meta);
 
@@ -485,6 +535,8 @@
       cover.className = "reader__cover";
       cover.src = post.cover;
       cover.alt = "";
+      cover.decoding = "async";
+      cover.fetchPriority = "high";
       frag.appendChild(cover);
     }
 
@@ -501,11 +553,11 @@
     backBtn.className = "link-arrow";
     backBtn.href = "index.html#highlights";
     backBtn.innerHTML =
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg> All highlights';
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg><span data-i18n="reader.allHighlights">All highlights</span>';
     const mail = document.createElement("a");
     mail.className = "btn btn--ghost";
     mail.href = "mailto:jinzhang15@outlook.com";
-    mail.textContent = "Get in touch";
+    setI18nText(mail, "ui.getInTouch", "Get in touch");
     footer.append(backBtn, mail);
     frag.appendChild(footer);
 

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page not found — Jinlun Zhang</title>
+  <title data-i18n="notFound.documentTitle">Page not found — Jinlun Zhang</title>
   <meta name="robots" content="noindex" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
     .nf { min-height: 72vh; display: grid; place-items: center; text-align: center; }
@@ -19,18 +19,23 @@
 <body>
   <main class="nf">
     <div class="container">
-      <p class="eyebrow section-head--center" style="justify-content:center;">Error 404</p>
+      <p class="eyebrow section-head--center" style="justify-content:center;" data-i18n="notFound.eyebrow">Error 404</p>
       <h1 class="nf__code">404</h1>
-      <h2 class="section-title">This page couldn't be found</h2>
-      <p class="section-intro" style="margin-inline:auto;max-width:44ch;">
+      <h2 class="section-title" data-i18n="notFound.title">This page couldn't be found</h2>
+      <p class="section-intro" style="margin-inline:auto;max-width:44ch;" data-i18n="notFound.text">
         The link may be broken or the page may have moved.
         Let's get you back on track.
       </p>
       <div class="nf__actions">
-        <a class="btn" href="index.html">Back to home</a>
-        <a class="btn btn--ghost" href="articles.html">Browse insights</a>
+        <a class="btn" href="index.html" data-i18n="notFound.home">Back to home</a>
+        <a class="btn btn--ghost" href="articles.html" data-i18n="notFound.insights">Browse insights</a>
+        <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language" data-lang-toggle>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.9 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.9-4-9s1.5-6.4 4-9Z"/></svg>
+          <span class="lang-toggle__label">中文</span>
+        </button>
       </div>
     </div>
   </main>
+  <script src="i18n.js"></script>
 </body>
 </html>

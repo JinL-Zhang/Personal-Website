@@ -20,6 +20,7 @@
   "use strict";
 
   var STORAGE_KEY = "site-lang";
+  var englishMarkup = new WeakMap();
 
   var TRANSLATIONS = {
     zh: {
@@ -28,7 +29,7 @@
       "brand.role": "业务 · 数据 · AI",
       "nav.home": "首页",
       "nav.insights": "洞察",
-      "nav.highlights": "精选",
+      "nav.highlights": "动态",
       "nav.experience": "经历",
       "nav.skills": "技能",
       "nav.work": "项目",
@@ -79,12 +80,25 @@
       "social.post1.tag": "随笔",
       "social.post1.title": "回国之前，我在《Stranger than Heaven》里看见了自己",
       "social.post1.excerpt": "看到游戏《Stranger than Heaven》预告后的一些随想——关于离乡、归乡，以及多年海外生活后“家”的意义。",
-      "social.1.tag": "数据与 AI",
-      "social.1.text": "关于数据与人工智能真正创造价值之处的简短观点——以及热度何时超越了实际。",
       "social.2.tag": "科技与社会",
       "social.2.text": "关于技术更广泛影响的随笔——伦理、可及性，以及数字化转型中“人”的一面。",
       "social.3.tag": "工作之道",
       "social.3.text": "关于咨询、交付，以及帮助团队将战略转化为行动的务实思考。",
+
+      /* ---- generated cards / reader controls ---- */
+      "ui.comingSoon": "即将推出",
+      "ui.inProgress": "创作中",
+      "ui.readArticle": "阅读全文",
+      "ui.emptyPreview": "文章正在准备中，敬请期待。",
+      "ui.emptyArticles": "暂无文章，敬请期待。",
+      "ui.getInTouch": "联系我",
+      "category.emergingTechnology": "新兴技术",
+      "category.dataAiStrategy": "数据与 AI 战略",
+      "category.aiGovernance": "AI 治理",
+      "category.reflections": "随笔",
+      "category.insight": "洞察",
+      "category.draft": "草稿",
+      "category.post": "动态",
 
       /* ---- experience ---- */
       "exp.eyebrow": "职业背景",
@@ -163,6 +177,8 @@
       "work.2.p": "评估可行性、价值与风险，优先排序值得投入的应用场景。",
       "work.3.h": "大语言模型评估与治理",
       "work.3.p": "对 AI 输出进行结构化评估——一致性、质量与负责任使用的护栏。",
+      "work.9.h": "现代数据与 AI 平台工程",
+      "work.9.p": "基于 Microsoft Fabric、Azure AI Foundry 与 Databricks 设计数据管道、平台基础和应用型 AI 工作流，并具备 Databricks Certified Data Engineer Associate 认证。",
       "work.4.h": "数字化转型路线图",
       "work.4.p": "按价值、可行性与组织就绪度排序的从现状到目标的演进路径。",
       "work.5.h": "Microsoft Dynamics 365 应用",
@@ -221,7 +237,29 @@
       "articles.back": "返回首页",
 
       /* ---- article reader page (article.html) ---- */
-      "reader.back": "全部洞察"
+      "reader.loadingArticle": "正在加载文章…",
+      "reader.loadingPost": "正在加载动态…",
+      "reader.allInsights": "全部洞察",
+      "reader.articleNotFound": "未找到文章",
+      "reader.articleNotFoundText": "抱歉，无法找到这篇文章。它可能已被移动或尚未发布。",
+      "reader.browseInsights": "浏览全部洞察",
+      "reader.articleDraftText": "这篇文章仍在创作中，尚未发布。敬请期待。",
+      "reader.externalLead": "本文完整版最初发布于 LinkedIn。以下为摘要——",
+      "reader.externalLink": "阅读原文 ↗",
+      "reader.completePrompt": "想阅读包含全部细节的完整版本？",
+      "reader.readLinkedIn": "在 LinkedIn 阅读全文",
+      "reader.allHighlights": "全部动态",
+      "reader.postNotFound": "未找到动态",
+      "reader.postNotFoundText": "抱歉，无法找到这篇动态。它可能已被移动或尚未发布。",
+      "reader.backHighlights": "返回全部动态",
+
+      /* ---- 404 page ---- */
+      "notFound.documentTitle": "未找到页面 — Jinlun Zhang",
+      "notFound.eyebrow": "错误 404",
+      "notFound.title": "未找到此页面",
+      "notFound.text": "链接可能已失效，或页面已被移动。让我们带你返回正确的位置。",
+      "notFound.home": "返回首页",
+      "notFound.insights": "浏览洞察"
     }
   };
 
@@ -233,6 +271,22 @@
     try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
   }
 
+  function formatDate(iso, lang) {
+    if (!iso) return "";
+    var date = new Date(iso + "T00:00:00");
+    if (isNaN(date.getTime())) return "";
+    return new Intl.DateTimeFormat(lang === "zh" ? "zh-CN" : "en-CA", {
+      year: "numeric",
+      month: "long"
+    }).format(date);
+  }
+
+  function formatReadingTime(minutes, lang) {
+    var value = parseInt(minutes, 10);
+    if (!value) return "";
+    return lang === "zh" ? value + " 分钟阅读" : value + " min read";
+  }
+
   function applyLang(lang) {
     var dict = TRANSLATIONS[lang] || null;
     document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
@@ -242,22 +296,33 @@
       var el = nodes[i];
       var key = el.getAttribute("data-i18n");
 
-      // Cache the original English markup once.
-      if (el.getAttribute("data-i18n-en") === null) {
-        el.setAttribute("data-i18n-en", el.innerHTML);
-      }
+      // Cache source markup without adding runtime-only data attributes.
+      if (!englishMarkup.has(el)) englishMarkup.set(el, el.innerHTML);
 
       if (dict && Object.prototype.hasOwnProperty.call(dict, key)) {
         el.innerHTML = dict[key];
       } else {
-        el.innerHTML = el.getAttribute("data-i18n-en");
+        el.innerHTML = englishMarkup.get(el);
       }
+    }
+
+    var dates = document.querySelectorAll("[data-i18n-date]");
+    for (var j = 0; j < dates.length; j++) {
+      dates[j].textContent = formatDate(dates[j].getAttribute("data-i18n-date"), lang);
+    }
+
+    var readingTimes = document.querySelectorAll("[data-i18n-minutes]");
+    for (var k = 0; k < readingTimes.length; k++) {
+      readingTimes[k].textContent = formatReadingTime(
+        readingTimes[k].getAttribute("data-i18n-minutes"),
+        lang
+      );
     }
 
     // Toggle button label always shows the language you can switch TO.
     var labels = document.querySelectorAll(".lang-toggle__label");
-    for (var j = 0; j < labels.length; j++) {
-      labels[j].textContent = lang === "zh" ? "EN" : "中文";
+    for (var m = 0; m < labels.length; m++) {
+      labels[m].textContent = lang === "zh" ? "EN" : "中文";
     }
 
     saveLang(lang);

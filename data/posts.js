@@ -20,7 +20,7 @@ const POSTS = [
     title: "回国之前，我在《Stranger than Heaven》里看见了自己",
     category: "Reflections",
     date: "2026-07-01",
-    cover: "assets/img/social/post1-image1.png",
+    cover: "assets/img/social/post1-image1.webp",
     excerpt:
       "看到游戏《Stranger than Heaven》预告后的一些随想 —— 关于离乡、归乡，以及多年海外生活后，“家”究竟意味着什么。",
     deck:
@@ -30,10 +30,10 @@ const POSTS = [
 
       <p>故事里的主角，大东真，的青年时期，与我这种久居海外而不归的人来说，还是很有共鸣的。2017 年，我出国去了英国；2018 年转去加拿大。此后因为疫情、经济条件、现实压力等各种原因，我再也没有回过国。算下来，已近八年。在现在即将回国之际，看到那个被命运推搡、又试图回到“故土”的青年，我很难不产生共鸣。</p>
 
-      <p>宣传片开头，主角在双亲死去后，在美国遭受不公，为寻找自己真正的归宿，偷渡回日本。眺望远方 —— <em>the Japan you have been dreaming about</em>。其目的地即似皇冠，又似火场。它既预示着接下来的故事，也某种程度上照见了我此刻的处境。对我而言，国内当然有一种“如日中天”的吸引力。哪怕很卷，哪怕竞争激烈，但那种卷本身也意味着生机、活力和向上的势能。街道、语言、食物、亲人、朋友、熟悉的社交语境，这些东西仿佛都在召唤我一般。</p>
+      <p>宣传片开头，主角在双亲死去后，在美国遭受不公，为寻找自己真正的归宿，偷渡回日本。眺望远方 —— <em>the Japan you have been dreaming about</em>。其目的地即似皇冠，又似火场。它既预示着接下来的故事，也某种程度上照见了我此刻的处境。对我而言，国内当然有一种“如日中天”的吸引力。哪怕很卷，哪怕竞争激烈，但那种卷，或者叫恶性竞争, 本身也意味着生机、活力和向上的势能。街道、语言、食物、亲人、朋友、熟悉的社交语境，这些东西仿佛都在召唤我一般。</p>
 
-      <img src="assets/img/social/post1-image2.png" alt="Stranger than Heaven trailer still" loading="lazy" />
-      <img src="assets/img/social/post1-image3.png" alt="Stranger than Heaven trailer still" loading="lazy" />
+      <img src="assets/img/social/post1-image2.webp" alt="Stranger than Heaven trailer still" loading="lazy" decoding="async" />
+      <img src="assets/img/social/post1-image3.webp" alt="Stranger than Heaven trailer still" loading="lazy" decoding="async" />
 
       <p>我也很清楚，对于一个多年未归、长期在海外生活的人来说，那里也可能不再只是皇冠，而是火场。甚至更残酷一点说，也许是火葬场。你以为自己只是回家，可真正回去之后，才发现家，或许早已不是家，而也是异域他乡。</p>
 
@@ -41,7 +41,7 @@ const POSTS = [
 
       <p>可问题在于，当一个人不被任何地方接纳时，他还能往哪里去？那句质问，<em>what are we trying so hard to protect</em>，令我惆怅。是的，我在海外这么多年，又到底是在追求和保护些什么呢？</p>
 
-      <img src="assets/img/social/post1-image4.png" alt="Stranger than Heaven trailer still" loading="lazy" />
+      <img src="assets/img/social/post1-image4.webp" alt="Stranger than Heaven trailer still" loading="lazy" decoding="async" />
 
       <blockquote>I get this is the place I am carving out for myself, but is it really what I want?</blockquote>
 
@@ -51,7 +51,7 @@ const POSTS = [
 
       <blockquote>Our only way forward is to make a place for ourselves. If this country would not accept us, we will carve out our own right from underneath it.</blockquote>
 
-      <img src="assets/img/social/post1-image5.png" alt="Stranger than Heaven trailer still" loading="lazy" />
+      <img src="assets/img/social/post1-image5.webp" alt="Stranger than Heaven trailer still" loading="lazy" decoding="async" />
 
       <p>我很想提一下这个宣传片的 bridge 部分，是我觉得全片最爽、也最“好莱坞”的一段。</p>
 
@@ -67,8 +67,8 @@ const POSTS = [
 
       <p>最后一段，则是全片最打动大众的一段。刚回国时，大东真和好友优站在烟囱台上，对着远方呐喊：<em>Hey Japan, I am Home — Saraba America. This is my home and NOTHING GONNA CHANGE THAT.</em></p>
 
-      <img src="assets/img/social/post1-image6.png" alt="Stranger than Heaven trailer still" loading="lazy" />
-      <img src="assets/img/social/post1-image7.png" alt="Stranger than Heaven trailer still" loading="lazy" />
+      <img src="assets/img/social/post1-image6.webp" alt="Stranger than Heaven trailer still" loading="lazy" decoding="async" />
+      <img src="assets/img/social/post1-image7.webp" alt="Stranger than Heaven trailer still" loading="lazy" decoding="async" />
 
       <p>然后镜头一转，人生几何。多年沧桑漂泊，几帧闪回，几段厮杀，几场命运沉浮，最后落到戴礼帽的那个切片上（帅的不谈）。总结了这个宣传片的尾段。那种少年意气与人生迟暮之间的流动，被剪得太有后劲了。毫不夸张地说，我看了不下 50 次。</p>
 
