@@ -38,8 +38,8 @@
 
       /* ---- hero ---- */
       "hero.eyebrow": "连接业务、数据与人工智能",
-      "hero.headline": "工作于业务战略、数据、人工智能与技术驱动的运营模式的交汇之处。",
-      "hero.summary": "我帮助企业将愿景转化为行动——把业务战略转译为切实可行的<strong>数据、人工智能与数字化转型</strong>成果。我的工作涵盖高管研讨、数据与 AI 战略、业务分析以及落地交付：从路线图到可衡量的改进。",
+      "hero.headline": "以数据与 AI 为基础，让数字战略落地。",
+      "hero.summary": "我帮助企业将业务战略转化为切实可行的<strong>数据、人工智能与数字化转型</strong>成果。",
       "hero.cta.articles": "阅读文章",
       "hero.cta.experience": "查看经历",
       "hero.cta.contact": "联系我",
@@ -73,7 +73,7 @@
       /* ---- social highlights ---- */
       "social.eyebrow": "社交动态",
       "social.title": "精选动态",
-      "social.intro": "一些简短的观点与随想——介于长文之间，关于数据、人工智能、技术与生活的思考。更多内容陆续更新。",
+      "social.intro": "工作之外的写作：关于文化、归属感与海外生活的个人随笔。",
       "social.soon": "敬请期待",
       "social.wip": "筹备中",
       "social.readpost": "阅读全文 →",
@@ -252,6 +252,9 @@
       "reader.postNotFound": "未找到动态",
       "reader.postNotFoundText": "抱歉，无法找到这篇动态。它可能已被移动或尚未发布。",
       "reader.backHighlights": "返回全部动态",
+      "reader.contents": "本文目录",
+      "reader.chinese": "中文原文",
+      "reader.original": "原文",
 
       /* ---- 404 page ---- */
       "notFound.documentTitle": "未找到页面 — Jinlun Zhang",
@@ -304,6 +307,14 @@
       } else {
         el.innerHTML = englishMarkup.get(el);
       }
+    }
+
+    var previews = document.querySelectorAll("[data-i18n-zh]");
+    for (var preview of previews) {
+      if (!englishMarkup.has(preview)) englishMarkup.set(preview, preview.textContent);
+      preview.textContent = lang === "zh"
+        ? preview.getAttribute("data-i18n-zh")
+        : englishMarkup.get(preview);
     }
 
     var dates = document.querySelectorAll("[data-i18n-date]");

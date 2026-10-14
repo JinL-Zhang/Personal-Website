@@ -3,10 +3,10 @@
    Vanilla JS. No dependencies. Works from the file system or GitHub Pages.
 
    Responsibilities
-   1. Sticky-header shadow on scroll
-   2. Mobile navigation toggle (accessible)
+   1. Sticky-header state on scroll (shadow + dark-over-hero)
+   2. Mobile navigation toggle (accessible) + sliding active-section pill
    3. Current year in the footer
-   4. Subtle scroll-reveal (IntersectionObserver)
+   4. Staggered scroll-reveal (IntersectionObserver) + card spotlight
    5. Render article cards (home preview + full Insights list)
    6. Render a single article on article.html (?id=…)
    ========================================================================== */
@@ -53,11 +53,13 @@
     return d.toLocaleDateString("en-CA", { year: "numeric", month: "long" });
   }
 
-  /** Rough reading-time estimate from an HTML string (~200 wpm). */
   function readingMinutesFromHtml(html) {
-    const text = String(html || "").replace(/<[^>]*>/g, " ");
-    const words = (text.match(/\S+/g) || []).length;
-    return Math.max(1, Math.round(words / 200));
+    const content = new DOMParser().parseFromString(html || "", "text/html");
+    const text = content.body.textContent;
+    const ideographs = /[\u3400-\u9fff\uf900-\ufaff\u3040-\u30ff]/g;
+    const characters = (text.match(ideographs) || []).length;
+    const words = (text.replace(ideographs, " ").match(/[\p{L}\p{N}]+/gu) || []).length;
+    return Math.max(1, Math.ceil(characters / 400 + words / 200));
   }
 
   /** Order articles: published (newest first), then upcoming drafts. */
@@ -76,9 +78,18 @@
   function initHeaderScroll() {
     const header = $(".site-header");
     if (!header) return;
-    const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    let scheduled = false;
+    const update = () => {
+      header.classList.toggle("scrolled", window.scrollY > 8);
+      scheduled = false;
+    };
+    update();
+    window.addEventListener("scroll", () => {
+      if (!scheduled) {
+        scheduled = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
   }
 
   /* ---------- 2. mobile navigation --------------------------------------- */
@@ -98,19 +109,76 @@
     );
 
     // Close after choosing a link
-    $$(".nav-links a", nav).forEach((a) =>
+    $$(".nav-links a, .nav-cta a", nav).forEach((a) =>
       a.addEventListener("click", () => setOpen(false))
     );
 
     // Close on Escape
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape" && nav.dataset.open === "true") {
+        setOpen(false);
+        toggle.focus();
+      }
     });
 
     // Close when clicking outside the header
     document.addEventListener("click", (e) => {
       if (nav.dataset.open === "true" && !nav.contains(e.target)) setOpen(false);
     });
+
+    window.matchMedia("(max-width: 1080px)").addEventListener("change", () => setOpen(false));
+  }
+
+  function initSectionNav() {
+    const menu = $(".nav-links");
+    const links = $$('.nav-links a[href^="#"]');
+    const sections = links.map((link) => $(link.getAttribute("href"))).filter(Boolean);
+    if (!menu || !sections.length) return;
+
+    const indicator = document.createElement("li");
+    indicator.className = "nav-indicator";
+    indicator.setAttribute("role", "presentation");
+    indicator.setAttribute("aria-hidden", "true");
+    menu.appendChild(indicator);
+
+    const moveIndicator = () => {
+      const active = $('a[aria-current="location"]', menu);
+      menu.toggleAttribute("data-has-current", Boolean(active));
+      if (!active) return;
+      indicator.style.setProperty("--x", active.offsetLeft + "px");
+      indicator.style.setProperty("--w", active.offsetWidth + "px");
+    };
+
+    let scheduled = false;
+    let currentId = null;
+    const update = () => {
+      const offset = $(".site-header").getBoundingClientRect().height + 32;
+      const current = sections.filter((section) => section.getBoundingClientRect().top <= offset).pop();
+      const nextId = current ? current.id : null;
+      if (nextId !== currentId) {
+        currentId = nextId;
+        links.forEach((link) => {
+          if (current && link.hash === "#" + current.id) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+        moveIndicator();
+      }
+      scheduled = false;
+    };
+    window.addEventListener("scroll", () => {
+      if (!scheduled) {
+        scheduled = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    window.addEventListener("resize", update);
+    // Link widths change with web-font loading and the EN/中文 switch.
+    if ("ResizeObserver" in window) {
+      const observer = new ResizeObserver(moveIndicator);
+      links.forEach((link) => observer.observe(link));
+    }
+    update();
+    requestAnimationFrame(() => indicator.classList.add("is-ready"));
   }
 
   /* ---------- 3. footer year --------------------------------------------- */
@@ -147,16 +215,31 @@
 
     const io = new IntersectionObserver(
       (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+        // Items entering together cascade in reading order.
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .forEach((entry, index) => {
+            entry.target.style.setProperty("--reveal-delay", Math.min(index, 6) * 80 + "ms");
             entry.target.classList.add("is-visible");
             obs.unobserve(entry.target);
-          }
-        });
+          });
       },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
     items.forEach((el) => io.observe(el));
+  }
+
+  /* ---------- 4b. cursor spotlight on cards ------------------------------ */
+  function initSpotlight() {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    const selector = ".focus-item, .skill-card, .theme-card, .edu-card, .article-card, .social-card, .xp";
+    document.addEventListener("pointermove", (event) => {
+      const card = event.target instanceof Element && event.target.closest(selector);
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", event.clientX - rect.left + "px");
+      card.style.setProperty("--my", event.clientY - rect.top + "px");
+    }, { passive: true });
   }
 
   /* ---------- 5. article cards ------------------------------------------- */
@@ -164,7 +247,7 @@
   /** Build one article card element. */
   function buildCard(article) {
     const card = document.createElement("article");
-    card.className = "article-card";
+    card.className = "article-card reveal";
 
     const href = "article.html?id=" + encodeURIComponent(article.id);
     const category = article.category || "Insight";
@@ -266,7 +349,7 @@
 
   /** Populate a grid element (#insights-grid or #articles-grid). */
   function renderGrid(grid) {
-    const all = orderedArticles();
+    const all = orderedArticles().filter((article) => article.published);
     const limit = parseInt(grid.dataset.limit || "0", 10);
     const items = limit > 0 ? all.slice(0, limit) : all;
 
@@ -289,6 +372,61 @@
     ["#insights-grid", "#articles-grid"].forEach((sel) => {
       const grid = $(sel);
       if (grid) renderGrid(grid);
+    });
+  }
+
+  function initPostGrid() {
+    const grid = $("#highlights-grid");
+    if (!grid) return;
+    const posts = (Array.isArray(window.POSTS) ? window.POSTS : [])
+      .filter((post) => post.published !== false)
+      .slice()
+      .sort((first, second) => (second.date || "").localeCompare(first.date || ""));
+    grid.replaceChildren();
+
+    posts.forEach((post) => {
+      const card = document.createElement("article");
+      card.className = "social-card social-card--post reveal";
+      const meta = document.createElement("div");
+      meta.className = "article-card__meta";
+      const category = document.createElement("span");
+      category.className = "pill";
+      setI18nText(category, CATEGORY_I18N_KEYS[post.category], post.category || "Post");
+      meta.appendChild(category);
+      if (post.date) {
+        const date = document.createElement("time");
+        date.dateTime = post.date;
+        appendMetaValue(meta, setI18nDate(date, post.date));
+      }
+
+      const title = document.createElement("h3");
+      title.className = "social-card__title";
+      const link = document.createElement("a");
+      link.href = "post.html?id=" + encodeURIComponent(post.id);
+      link.className = "social-card__link";
+      link.textContent = post.titleEn || post.title;
+      if (post.titleEn) link.dataset.i18nZh = post.title;
+      else if (post.language) link.lang = post.language;
+      title.appendChild(link);
+
+      const excerpt = document.createElement("p");
+      excerpt.className = "social-card__text";
+      excerpt.textContent = post.excerptEn || post.excerpt || "";
+      if (post.excerptEn) excerpt.dataset.i18nZh = post.excerpt;
+      else if (post.language) excerpt.lang = post.language;
+
+      const foot = document.createElement("div");
+      foot.className = "social-card__foot";
+      const reading = document.createElement("span");
+      const minutes = readingMinutesFromHtml(post.body);
+      reading.dataset.i18nMinutes = String(minutes);
+      reading.textContent = minutes + " min read";
+      const more = document.createElement("span");
+      more.className = "social-card__readmore";
+      setI18nText(more, "social.readpost", "Read post →");
+      foot.append(reading, more);
+      card.append(meta, title, excerpt, foot);
+      grid.appendChild(card);
     });
   }
 
@@ -472,7 +610,7 @@
 
     const id = new URLSearchParams(window.location.search).get("id");
     const list = Array.isArray(window.POSTS) ? window.POSTS : [];
-    const post = list.find((p) => p.id === id);
+    const post = list.find((p) => p.id === id && p.published !== false);
 
     // Not found ----------------------------------------------------------
     if (!post) {
@@ -514,18 +652,39 @@
       const date = document.createElement("span");
       appendMetaValue(meta, setI18nDate(date, post.date));
     }
+    const reading = document.createElement("span");
+    const minutes = readingMinutesFromHtml(post.body);
+    reading.dataset.i18nMinutes = String(minutes);
+    reading.textContent = minutes + " min read";
+    appendMetaValue(meta, reading);
+    if (post.language === "zh-Hans") {
+      const language = document.createElement("span");
+      appendMetaValue(meta, setI18nText(language, "reader.chinese", "Chinese original"));
+    }
+    if (post.sourceUrl) {
+      const source = document.createElement("a");
+      source.href = post.sourceUrl;
+      source.target = "_blank";
+      source.rel = "noopener noreferrer";
+      const label = document.createElement("span");
+      setI18nText(label, "reader.original", "Original");
+      source.append(label, " · " + (post.sourceName || "Source"));
+      appendMetaValue(meta, source);
+    }
     frag.appendChild(meta);
 
     // Title + deck
     const h1 = document.createElement("h1");
     h1.className = "reader__title";
     h1.textContent = post.title;
+    if (post.language) h1.lang = post.language;
     frag.appendChild(h1);
 
     if (post.deck) {
       const deck = document.createElement("p");
       deck.className = "reader__deck";
       deck.textContent = post.deck;
+      if (post.language) deck.lang = post.language;
       frag.appendChild(deck);
     }
 
@@ -544,6 +703,7 @@
     const content = document.createElement("div");
     content.className = "reader__content";
     content.innerHTML = post.body || "";
+    if (post.language) content.lang = post.language;
     frag.appendChild(content);
 
     // Footer row
@@ -566,6 +726,59 @@
     window.scrollTo(0, 0);
   }
 
+  function initReadingTools() {
+    const content = $(".reader__content");
+    if (!content) return;
+    const headings = $$("h2", content);
+    if (headings.length > 1) {
+      const contents = document.createElement("details");
+      contents.className = "reader__toc";
+      const summary = document.createElement("summary");
+      setI18nText(summary, "reader.contents", "In this piece");
+      const list = document.createElement("ol");
+      if (content.lang) list.lang = content.lang;
+      headings.forEach((heading, index) => {
+        if (!heading.id) heading.id = "reader-section-" + (index + 1);
+        heading.tabIndex = -1;
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = "#" + heading.id;
+        link.textContent = heading.textContent;
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+      contents.append(summary, list);
+      content.before(contents);
+    }
+
+    const progress = document.createElement("progress");
+    progress.className = "reading-progress";
+    progress.max = 1;
+    progress.value = 0;
+    progress.setAttribute("aria-hidden", "true");
+    document.body.appendChild(progress);
+    let scheduled = false;
+    const update = () => {
+      const bounds = content.getBoundingClientRect();
+      const headerHeight = $(".site-header")?.offsetHeight || 0;
+      const distance = Math.max(1, bounds.height - window.innerHeight + headerHeight);
+      progress.value = Math.max(0, Math.min(1, (headerHeight - bounds.top) / distance));
+      scheduled = false;
+    };
+    window.addEventListener("scroll", () => {
+      if (!scheduled) {
+        scheduled = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    window.addEventListener("resize", update);
+    if (window.location.hash) {
+      const target = document.getElementById(window.location.hash.slice(1));
+      if (target && content.contains(target)) target.scrollIntoView({ behavior: "instant" });
+    }
+    update();
+  }
+
   /* ---------- boot ------------------------------------------------------- */
   function init() {
     initHeaderScroll();
@@ -573,9 +786,13 @@
     initYear();
     initToTop();
     initGrids();
+    initPostGrid();
     initReader();
     initPostReader();
+    initReadingTools();
     initReveal();
+    initSpotlight();
+    initSectionNav();
   }
 
   if (document.readyState === "loading") {

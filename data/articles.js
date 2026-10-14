@@ -7,8 +7,8 @@
    2. Give it a unique "id" (lowercase, dashes). This becomes the page URL:
       article.html?id=your-id
    3. Fill in title, category, date (YYYY-MM-DD), excerpt, deck and body.
-   4. To publish: set "published: true". Draft/upcoming pieces use
-      "published: false" and appear as a "Coming soon" card.
+  4. To publish: set "published: true". Draft/upcoming pieces use
+    "published: false" and are omitted from public listings.
    5. Optional cover image: drop a file in assets/img/articles/ and set
       "cover" to its path. Leave "cover" empty ("") to use an automatic
       gradient placeholder.

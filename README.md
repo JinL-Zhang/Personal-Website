@@ -17,6 +17,7 @@ Personal Website/
 ├── 404.html                       # Friendly not-found page
 ├── styles.css                     # All styling (design tokens at the top)
 ├── script.js                      # Navigation, reveals, article rendering
+├── i18n.js                        # English / Simplified Chinese interface
 ├── .nojekyll                      # Tells GitHub Pages to skip Jekyll
 ├── .gitignore                     # Keeps the résumé PDF out of the public repo
 ├── README.md                      # This file
@@ -74,7 +75,7 @@ Open `data/articles.js` and copy an existing `{ … }` block to the **top** of t
   date: "2026-03-15",              // YYYY-MM-DD (used for ordering + display)
   readingTime: "5 min read",       // optional; auto-estimated if omitted
   cover: "assets/img/articles/my-cover.jpg", // optional ("" = gradient placeholder)
-  published: true,                 // false = shows as a "Coming soon" card
+  published: true,                 // false = omitted from public listings
   externalUrl: "",                 // optional link to the original (e.g. LinkedIn)
   excerpt: "One or two sentences shown on the card.",
   deck: "A short standfirst shown under the title on the article page.",
@@ -89,19 +90,41 @@ Open `data/articles.js` and copy an existing `{ … }` block to the **top** of t
 },
 ```
 
-- **Publish later?** Set `published: false`. The article appears as a tasteful
-  “Coming soon” card and won’t open until you flip it to `true`.
-- **Ordering** is automatic: published articles show newest-first, followed by
-  any upcoming drafts.
+- **Publish later?** Set `published: false`. The article is omitted from the
+  homepage and Insights listing until you flip it to `true`. Its direct reader
+  link shows an unpublished notice.
+- **Ordering** is automatic: published articles show newest-first.
 - The home page shows the **first 3**; the full list lives on `articles.html`.
+
+Drafts in JavaScript files are still downloadable, even when hidden from the
+interface. Keep confidential or genuinely private drafts outside the deployed
+files.
 
 The “Quantum Computing” entry is fully self-hosted in `data/articles.js`.
 
 ### Adding a Highlight post
 
 Add a post object to `data/posts.js`, place its optimized images in
-`assets/img/social/`, then add or update its card in the `#highlights` section
-of `index.html`. Each full post opens at `post.html?id=your-post-id`.
+`assets/img/social/` when needed. The homepage generates cards from this data,
+newest first; no separate HTML card or translation-dictionary entry is needed.
+Each full post opens at `post.html?id=your-post-id`.
+
+- Use `title`, `excerpt`, and `body` for the original text. `deck` and `cover`
+  are optional. Use an ISO `date` for sorting.
+- For a Chinese post, set `language: "zh-Hans"`. Optional `titleEn` and
+  `excerptEn` provide English previews; the full body stays in Chinese in
+  either interface language.
+- Optional `sourceUrl` and `sourceName` add a clearly labelled original-source
+  link. The September 2026 homecoming essay is reproduced from the author's
+  Zhihu post, using its displayed last-edited date. The original has no images.
+- Set `published: false` to omit a post from the homepage and its reader.
+  Existing posts without the field remain published.
+- The reader generates a collapsible contents list for two or more `h2`
+  headings, a reading-progress indicator, and a reading-time estimate that
+  accounts for both Chinese characters and English words.
+- Preserve author formatting with paragraphs, headings, emphasis, lists,
+  blockquotes, rules, and code blocks. Do not paste platform scripts, tracking
+  attributes, or automatically inserted search links into the content.
 
 ---
 
@@ -176,7 +199,14 @@ of `styles.css` under `:root`. For example, to shift the accent colour, change:
 --brand: #35608e;      /* muted slate blue */
 ```
 
-Fonts are loaded from Google Fonts in each HTML `<head>` (Inter + Source Serif 4).
+Fonts are loaded from Google Fonts in each HTML `<head>` (Manrope + Source Serif 4,
+with local Chinese fallbacks). The design uses graphite text, blue navigation
+accents, green editorial details, and unframed section layouts.
+
+The homepage highlights the current section in navigation. Mobile navigation
+keeps the language switch visible, puts Contact in the menu, and returns keyboard
+focus to the toggle when dismissed with Escape. Short reveal transitions respect
+the operating system's reduced-motion preference.
 
 ---
 
@@ -185,3 +215,17 @@ Fonts are loaded from Google Fonts in each HTML `<head>` (Inter + Source Serif 4
 Client names and confidential engagement details are intentionally omitted.
 Selected work is described at a high level. Keep it that way when adding new
 content — describe outcomes and capabilities rather than proprietary specifics.
+
+## 8. Checks before publishing
+
+- Open the homepage at mobile and desktop widths in both interface languages.
+- Open both Highlights and an Insight; check contents links, images, and source
+  links. Confirm unknown post/article IDs show a useful fallback.
+- Use the keyboard to open/close the mobile menu and follow the skip link.
+- Check reduced motion and make sure published content remains readable.
+- Confirm `git status` contains no private documents or unoptimized originals.
+
+Useful next content improvements: short, anonymized case studies with verified
+outcomes, and static per-post HTML metadata if unique search/social previews
+become a priority. The current query-based readers render their content and
+titles in JavaScript; social crawlers may only see the generic HTML metadata.
