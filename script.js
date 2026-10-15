@@ -378,11 +378,21 @@
   function initPostGrid() {
     const grid = $("#highlights-grid");
     if (!grid) return;
-    const posts = (Array.isArray(window.POSTS) ? window.POSTS : [])
+    const limit = parseInt(grid.dataset.limit || "0", 10);
+    const sorted = (Array.isArray(window.POSTS) ? window.POSTS : [])
       .filter((post) => post.published !== false)
       .slice()
       .sort((first, second) => (second.date || "").localeCompare(first.date || ""));
+    const posts = limit > 0 ? sorted.slice(0, limit) : sorted;
     grid.replaceChildren();
+
+    if (!posts.length) {
+      const empty = document.createElement("p");
+      empty.className = "section-intro";
+      setI18nText(empty, "ui.emptyHighlights", "No highlights yet — check back soon.");
+      grid.appendChild(empty);
+      return;
+    }
 
     posts.forEach((post) => {
       const card = document.createElement("article");
@@ -615,12 +625,12 @@
     // Not found ----------------------------------------------------------
     if (!post) {
       root.innerHTML =
-        '<a class="reader__back" href="index.html#highlights">' +
+        '<a class="reader__back" href="highlights.html">' +
         backArrow() +
         '<span data-i18n="reader.allHighlights">All highlights</span></a>' +
         '<h1 class="reader__title" data-i18n="reader.postNotFound">Post not found</h1>' +
         '<p class="reader__deck" data-i18n="reader.postNotFoundText">Sorry, we couldn\'t find that post. It may have moved or is not published yet.</p>' +
-        '<p><a class="btn" href="index.html#highlights" data-i18n="reader.backHighlights">Back to highlights</a></p>';
+        '<p><a class="btn" href="highlights.html" data-i18n="reader.backHighlights">Back to highlights</a></p>';
       return;
     }
 
@@ -635,7 +645,7 @@
     // Back link
     const back = document.createElement("a");
     back.className = "reader__back";
-    back.href = "index.html#highlights";
+    back.href = "highlights.html";
     back.innerHTML = backArrow() +
       '<span data-i18n="reader.allHighlights">All highlights</span>';
     frag.appendChild(back);
@@ -711,7 +721,7 @@
     footer.className = "reader__footer";
     const backBtn = document.createElement("a");
     backBtn.className = "link-arrow";
-    backBtn.href = "index.html#highlights";
+    backBtn.href = "highlights.html";
     backBtn.innerHTML =
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg><span data-i18n="reader.allHighlights">All highlights</span>';
     const mail = document.createElement("a");

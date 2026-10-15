@@ -77,6 +77,7 @@
       "social.soon": "敬请期待",
       "social.wip": "筹备中",
       "social.readpost": "阅读全文 →",
+      "social.viewall": "查看全部动态",
       "social.post1.tag": "随笔",
       "social.post1.title": "回国之前，我在《Stranger than Heaven》里看见了自己",
       "social.post1.excerpt": "看到游戏《Stranger than Heaven》预告后的一些随想——关于离乡、归乡，以及多年海外生活后“家”的意义。",
@@ -91,6 +92,7 @@
       "ui.readArticle": "阅读全文",
       "ui.emptyPreview": "文章正在准备中，敬请期待。",
       "ui.emptyArticles": "暂无文章，敬请期待。",
+      "ui.emptyHighlights": "暂无动态，敬请期待。",
       "ui.getInTouch": "联系我",
       "category.emergingTechnology": "新兴技术",
       "category.dataAiStrategy": "数据与 AI 战略",
@@ -235,6 +237,10 @@
       "articles.title": "文章与观点",
       "articles.intro": "关于数据、人工智能，以及数字化转型中“人”的一面的长篇与短篇写作。",
       "articles.back": "返回首页",
+
+      /* ---- highlights listing page (highlights.html) ---- */
+      "highlights.documentTitle": "精选动态 — Jinlun Zhang",
+      "highlights.intro": "工作之外的写作：关于文化、归属感与海外生活的个人随笔与思考。新内容会陆续更新，并在适用时附上原文出处。",
 
       /* ---- article reader page (article.html) ---- */
       "reader.loadingArticle": "正在加载文章…",

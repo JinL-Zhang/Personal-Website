@@ -108,7 +108,7 @@
           <!-- Profile photo. Replace assets/img/profile.png to update. -->
           <figure class="hero__figure">
               <img class="hero__portrait"
-                src="assets/img/profile.webp"
+                src="assets/img/profile-hero.webp"
                 alt="Portrait of Jinlun Zhang" width="380" height="475"
                 decoding="async" fetchpriority="high" />
             <figcaption class="hero__badge">
@@ -212,16 +212,23 @@
          ================================================================== -->
     <section class="section" id="highlights" aria-labelledby="highlights-title">
       <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow" data-i18n="social.eyebrow">Social</p>
-          <h2 class="section-title" id="highlights-title" data-i18n="social.title">Highlights</h2>
-          <p class="section-intro" data-i18n="social.intro">
-            Beyond the work: personal essays on culture, belonging, and
-            life between places.
-          </p>
-        </header>
+        <div class="articles-head reveal">
+          <header class="section-head">
+            <p class="eyebrow" data-i18n="social.eyebrow">Social</p>
+            <h2 class="section-title" id="highlights-title" data-i18n="social.title">Highlights</h2>
+            <p class="section-intro" data-i18n="social.intro">
+              Beyond the work: personal essays on culture, belonging, and
+              life between places.
+            </p>
+          </header>
+          <a class="link-arrow" href="highlights.html">
+            <span data-i18n="social.viewall">View all highlights</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
 
-        <div class="social-grid" id="highlights-grid">
+        <!-- Latest posts from data/posts.js; the full list is on highlights.html -->
+        <div class="social-grid" id="highlights-grid" data-limit="2">
           <noscript>
             <p><a href="https://zhuanlan.zhihu.com/p/2083449088536737535" lang="zh-Hans">八年后回国，像从2018年直接穿越到了2026年：熟悉的故乡，陌生的自己</a></p>
             <p><a href="https://zhuanlan.zhihu.com/p/2059179198762186303" lang="zh-Hans">回国之前，我在《Stranger than Heaven》里看见了自己</a></p>
@@ -625,7 +632,7 @@
             <li><a href="#skills" data-i18n="footer.link.skills">Skills</a></li>
             <li><a href="#work" data-i18n="footer.link.work">Selected Work</a></li>
             <li><a href="#approach" data-i18n="footer.link.approach">Approach</a></li>
-            <li><a href="#highlights" data-i18n="footer.link.highlights">Highlights</a></li>
+            <li><a href="highlights.html" data-i18n="footer.link.highlights">Highlights</a></li>
             <li><a href="articles.html" data-i18n="footer.link.insights">Insights</a></li>
           </ul>
         </div>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add('js');</script>
+
+  <title data-i18n="highlights.documentTitle">Highlights — Jinlun Zhang</title>
+  <meta name="description"
+        content="Personal essays and reflections by Jinlun Zhang on culture, belonging, and life between places." />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap"
+        rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+  <!-- HEADER — links point back to the home page sections -->
+  <header class="site-header" id="top">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html" aria-label="Jinlun Zhang — home">
+          <span class="brand__mark" aria-hidden="true">JZ</span>
+          <span class="brand__name">Jinlun Zhang
+            <span class="brand__role" data-i18n="brand.role">Business, Data &amp; AI</span>
+          </span>
+        </a>
+
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="index.html#insights" data-i18n="nav.insights">Insights</a></li>
+          <li><a href="index.html#highlights" data-i18n="nav.highlights">Highlights</a></li>
+          <li><a href="index.html#experience" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="index.html#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="index.html#work" data-i18n="nav.work">Work</a></li>
+          <li><a href="index.html#approach" data-i18n="nav.approach">Approach</a></li>
+        </ul>
+
+        <div class="nav-cta">
+          <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language" data-lang-toggle>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.9 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.9-4-9s1.5-6.4 4-9Z"/></svg>
+            <span class="lang-toggle__label">中文</span>
+          </button>
+          <a class="btn" href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        </div>
+
+        <button class="nav-toggle" type="button"
+                aria-label="Toggle navigation menu"
+                aria-controls="nav-menu" aria-expanded="false">
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--page" aria-labelledby="highlights-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="social.eyebrow">Social</p>
+          <h1 class="section-title" id="highlights-title" data-i18n="social.title">Highlights</h1>
+          <p class="section-intro" data-i18n="highlights.intro">
+            Beyond the work: personal essays and reflections on culture,
+            belonging, and life between places. New pieces are added over
+            time, with a link to the original source where relevant.
+          </p>
+        </header>
+
+        <!-- All highlight cards render here from data/posts.js -->
+        <div class="social-grid" id="highlights-grid">
+          <noscript>
+            <p><a href="https://zhuanlan.zhihu.com/p/2083449088536737535" lang="zh-Hans">八年后回国，像从2018年直接穿越到了2026年：熟悉的故乡，陌生的自己</a></p>
+            <p><a href="https://zhuanlan.zhihu.com/p/2059179198762186303" lang="zh-Hans">回国之前，我在《Stranger than Heaven》里看见了自己</a></p>
+          </noscript>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand__mark" aria-hidden="true">JZ</span>
+            <span class="brand__name">Jinlun Zhang
+              <span class="brand__role" data-i18n="brand.role">Business, Data &amp; AI</span>
+            </span>
+          </a>
+          <p class="footer-about" data-i18n="footer.about">
+            Consultant working at the intersection of business strategy, data,
+            AI, and technology-enabled operating models.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.explore">Explore</h4>
+          <ul>
+            <li><a href="index.html#experience" data-i18n="footer.link.experience">Experience</a></li>
+            <li><a href="index.html#skills" data-i18n="footer.link.skills">Skills</a></li>
+            <li><a href="index.html#work" data-i18n="footer.link.work">Selected Work</a></li>
+            <li><a href="index.html#approach" data-i18n="footer.link.approach">Approach</a></li>
+            <li><a href="highlights.html" data-i18n="footer.link.highlights">Highlights</a></li>
+            <li><a href="articles.html" data-i18n="footer.link.insights">Insights</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.connect">Connect</h4>
+          <ul>
+            <li><a href="mailto:jinzhang15@outlook.com" data-i18n="footer.link.email">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/jin-zhang-1ba407171/" target="_blank" rel="noopener" data-i18n="footer.link.linkedin">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year">2026</span> <span data-i18n="footer.rights">Jinlun Zhang. All rights reserved.</span></p>
+        <a class="to-top" href="#top">
+          <span data-i18n="footer.totop">Back to top</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/posts.js"></script>
+  <script src="script.js"></script>
+  <script src="i18n.js"></script>
+</body>
+</html>

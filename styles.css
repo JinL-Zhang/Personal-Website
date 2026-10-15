@@ -692,6 +692,7 @@ strong { color: var(--ink-soft); font-weight: 600; }
 .hero__portrait {
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: 50% 0%;
   width: 100%;
   height: auto;
   border-radius: var(--r-xl);

@@ -12,6 +12,7 @@ opening `index.html` in a browser and deploys to **GitHub Pages** as-is.
 Personal Website/
 ├── index.html                     # Home + all main sections
 ├── articles.html                  # Insights: full list of articles
+├── highlights.html                # Highlights: full list of posts
 ├── article.html                   # Single-article reader (loads ?id=…)
 ├── post.html                      # Single-highlight reader (loads ?id=…)
 ├── 404.html                       # Friendly not-found page
@@ -27,7 +28,8 @@ Personal Website/
 └── assets/
     ├── favicon.svg                # Site icon (JZ monogram)
     └── img/
-      ├── profile.webp           # Optimized profile photo used on the site
+      ├── profile.webp           # Optimized profile photo (original 5:7 crop)
+      ├── profile-hero.webp      # 4:5 hero portrait with extra headroom (used on the site)
       ├── profile-social.jpg     # Social-share preview image
         ├── logo-bdo.png           # Company logos (experience section)
         ├── logo-rbc.png
@@ -43,7 +45,7 @@ Personal Website/
 
 | What                | Put it here                              | Then update                                                        |
 | ------------------- | ---------------------------------------- | ------------------------------------------------------------------ |
-| **Profile photo**   | `assets/img/profile.webp`                | Replace the optimized file, or update its path in `index.html`.    |
+| **Profile photo**   | `assets/img/profile-hero.webp`           | Use a 4:5 image with space above the head, or update its path in `index.html`. |
 | **Company / school logos** | `assets/img/logo-*.png`           | Replace the matching file (keep the name) to update a logo.        |
 | **Article covers**  | `assets/img/articles/`                   | Reference the path in `data/articles.js` (`cover: "..."`).         |
 | **Article content** | `data/articles.js`                       | Add/edit article objects (see below).                              |
